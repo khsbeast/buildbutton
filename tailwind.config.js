@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   mode: 'jit',
   purge: {
-    enabled: ["production", "staging"].includes(process.env.NODE_ENV),
+    enabled: ["production"].includes(process.env.NODE_ENV),
     content: [
       './**/*.html.erb',
       './app/helpers/**/*.rb',
@@ -34,6 +34,18 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      flamingo: {
+          '50':  '#f6f5fa',
+          '100': '#f2e7fa',
+          '200': '#e6c9f8',
+          '300': '#dba7f7',
+          '400': '#d479f6',
+          '500': '#cd4df5',
+          '600': '#b431f0',
+          '700': '#8c27d9',
+          '800': '#802bb1',
+          '900': '#541d89',
+        },
     },
     spacing: {
       px: '1px',
