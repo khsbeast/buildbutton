@@ -19,3 +19,11 @@ h3 {
 h4 {
   @apply sm:text-lg text-base font-bold text-gray-600 py-2 leading-none tracking-tight;
 }
+
+a {
+  @apply underline text-blue-500;
+}
+
+a:hover {
+  @apply text-blue-700;
+}
