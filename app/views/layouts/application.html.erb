@@ -32,6 +32,16 @@
     <meta name="twitter:title" content="<% if yield(:meta_og_twitter_title).present? %><%= yield(:meta_og_twitter_title) %><% else %>Remote Clan<% end %>">
     <meta name="twitter:description" content="<% if yield(:meta_og_twitter_description).present? %><%= yield(:meta_og_twitter_description) %><% else %>Community to discuss, learn and grow remote work.<% end %>">
     <meta name="twitter:image" content="<% if yield(:meta_og_twitter_image).present? %><%= yield(:meta_og_twitter_image) %><% else %>https://ik.imagekit.io/remotetools/remoteness_calculator_logos/rc_screenshot_ANaQNZ1Zz.png<% end %>">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DE5Y7J2F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-92DE5Y7J2F');
+    </script>
   </head>
 
   <body>
