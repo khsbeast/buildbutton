@@ -1,3 +1,3 @@
 class CoreArticle < ApplicationRecord
-  has_one :category
+  belongs_to :category
 end
