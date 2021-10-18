@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'marketing', to:'categories#index'
   get 'funding', to:'categories#index'
   get 'product', to:'categories#index'
+  get ':category-glossary', to:'categories#glossary'
 
   get '/:category/:slug', to:'categories#show'
   #general blog route
