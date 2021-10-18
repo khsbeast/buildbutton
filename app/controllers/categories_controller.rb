@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def glossary
     @category = Category.find_by(slug:params[:category])
-    @resources = Resource.where(category:@category).sort_by &:glossary_letter
+    @resources = Resource.where.not(glossary_letter:[nil, ""]).where(category:@category).sort_by &:glossary_letter
     @current_char = ""
     @previous_char = ""
   end

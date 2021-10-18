@@ -5,7 +5,7 @@
 <% if @current_char != @previous_char %>
 <h1 class="sm:text-4xl text-2xl font-extrabold title-font text-flamingo-800 pt-8 pb-2 max-w-3xl leading-none tracking-tight border-b-2 mb-4"><%= @current_char %></h1>
 <% end %>
-<a class="no-underline text-gray-700" href="/<%= @category.slug %>/<%= resource.slug %>"><%= resource.h1 %></a>
+<p><a class="no-underline text-gray-700" href="/<%= @category.slug %>/<%= resource.slug %>"><%= resource.h1 %></a></p>
 <% @previous_char = @current_char %>
 <% end %>
 </section>
