@@ -1,9 +1,14 @@
 <div class="max-w-4xl mx-auto">
-<section class="sm:mx-2 mx-8 top-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
+<section class="sm:mx-2 mx-8 top-section mt-0 sm:mt-8 text-gray-700 body-font">
+  <% @alphabet.each do |alpha| %>
+  <a href="#<%= alpha %>" class="no-underline text-gray-700 sm:text-4xl text-2xl font-extrabold title-font pr-3 max-w-3xl leading-none tracking-tight"><%= alpha %></a>
+  <% end %>
+</section>
+<section class="sm:mx-2 mx-8 glossary-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
 <% @resources.each do |resource| %>
 <% @current_char  = resource.glossary_letter %>
 <% if @current_char != @previous_char %>
-<h1 class="sm:text-4xl text-2xl font-extrabold title-font text-flamingo-800 pt-8 pb-2 max-w-3xl leading-none tracking-tight border-b-2 mb-4"><%= @current_char %></h1>
+<h1 class="sm:text-4xl text-2xl font-extrabold title-font text-flamingo-800 pt-8 pb-2 max-w-3xl leading-none tracking-tight border-b-2 mb-4" id="<%= @current_char %>"><%= @current_char %></h1>
 <% end %>
 <p><a class="no-underline text-gray-700" href="/<%= @category.slug %>/<%= resource.slug %>"><%= resource.h1 %></a></p>
 <% @previous_char = @current_char %>

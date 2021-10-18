@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
     @resources = Resource.where.not(glossary_letter:[nil, ""]).where(category:@category).sort_by &:glossary_letter
     @current_char = ""
     @previous_char = ""
+    @alphabet = ("A".."Z")
   end
 
   def show
