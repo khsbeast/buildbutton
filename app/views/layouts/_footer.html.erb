@@ -1,0 +1,17 @@
+<div class="sm:mt-32 mt-2 sm:mb-8 mb-2">
+  <div class="border-t-2 mx-auto sm:flex sm:space-x-8 flex-none max-w-4xl mt-4">
+    <div class="w-full sm:w-1/2">
+      <h2>Categories</h2>
+      <% @categories_all.each do |category| %>
+      <p><a href="/<%= category.slug %>" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name %></a></p>
+      <% end %>
+      <p><a href="/all-posts" class="no-underline text-gray-700 sm:text-lg text-base">All posts</a></p>
+    </div>
+    <div class="w-full sm:w-1/2">
+      <h2>Glossary</h2>
+      <% @categories_all.each do |category| %>
+      <p><a href="/<%= category.slug %>-glossary" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

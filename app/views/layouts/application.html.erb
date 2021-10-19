@@ -9,7 +9,7 @@
 
     <% if @meta_tags %>
       <% @meta_tags.each do |k,v| %>
-        <meta name="<%= k %>" content="<%= v %>" />
+        <meta name="<%= k %>" content="<%= v %>"/>
       <% end %>
     <% end %>
 
@@ -20,7 +20,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <% if @canonical_url.present? %>
-      <link rel="canonical" href="<%= @canonical_url %>" />
+      <link rel="canonical" href="<%= @canonical_url %>"/>
     <% end %>
 
     <meta property="og:title" content="<% if yield(:meta_og_title).present? %><%= yield(:meta_og_title) %><% else %>Remote Clan<% end %>">
@@ -34,20 +34,29 @@
     <meta name="twitter:image" content="<% if yield(:meta_og_twitter_image).present? %><%= yield(:meta_og_twitter_image) %><% else %>https://ik.imagekit.io/remotetools/remoteness_calculator_logos/rc_screenshot_ANaQNZ1Zz.png<% end %>">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DE5Y7J2F"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-92DE5Y7J2F"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag('js', new Date());
 
       gtag('config', 'G-92DE5Y7J2F');
     </script>
 
-    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+    <script async="async" defer="defer" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+    <% [ :error, :success, :notice ].each do |f| %>
+      <% if flash[f].present? %>
+        <div class="flash-<%= f %> max-w-4xl mx-auto sm:mt-4 mt-2"><%= flash[f] %></div>
+      <% end %>
+    <% end %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

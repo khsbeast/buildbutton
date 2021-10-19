@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  root 'resources#index'
-  #get 'resources/index'
+  root 'categories#home'
+
+  post '/create_newsletter_subscriber' => "categories#create_newsletter_subscriber", :as => "create_newsletter_subscriber"
+
+  get 'all-posts', to:'resources#index'
   #categories
   get 'marketing', to:'categories#index'
   get 'funding', to:'categories#index'

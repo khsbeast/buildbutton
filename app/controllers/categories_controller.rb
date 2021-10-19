@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
-  def index
 
+  def home
+  end
+
+  def index
   end
 
   def glossary
@@ -34,5 +37,20 @@ class CategoriesController < ApplicationController
     elsif @core_article
       render 'core_articles/show'
     end
+  end
+
+  def create_newsletter_subscriber
+    @subscriber = NewsletterSubscriber.new(newsletter_subscriber_params)
+
+    if @subscriber.save
+      redirect_to request.referer, flash: { success: "You're now subscribed 😎" }
+    else
+      redirect_to request.referer, flash: { error: "#{@subscriber.errors.full_messages.join(', ')}" }
+    end
+  end
+
+  private
+  def newsletter_subscriber_params
+    params.require(:newsletter_subscriber).permit(:name, :email)
   end
 end

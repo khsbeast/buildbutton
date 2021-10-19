@@ -8,7 +8,18 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "stylesheets/application.scss"
+require("jquery")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).ready(function() {
+  setTimeout(function(){
+    $('.flash-error').fadeOut();
+  }, 2000);
+
+  setTimeout(function(){
+    $('.flash-success').fadeOut();
+  }, 2000);
+});
