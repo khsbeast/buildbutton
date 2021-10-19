@@ -17,6 +17,10 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find_by(slug:params[:category])
     @resource = Resource.find_by(slug:params[:slug])
+    if @resource.category != @category
+      redirect_to '/404'
+    end
+
     @core_article = CoreArticle.find_by(slug:params[:slug])
     @post = @resource ? @resource : @core_article
     @title = @post.title
