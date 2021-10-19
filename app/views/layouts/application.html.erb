@@ -53,7 +53,7 @@
     <%= render 'layouts/header' %>
     <% [ :error, :success, :notice ].each do |f| %>
       <% if flash[f].present? %>
-        <div class="flash-<%= f %> max-w-4xl mx-auto sm:mt-4 mt-2"><%= flash[f] %></div>
+        <div class="flash-<%= f %> mx-auto sm:mt-4 mt-2 sm:mx-32 mx-4"><%= flash[f] %></div>
       <% end %>
     <% end %>
     <%= yield %>
