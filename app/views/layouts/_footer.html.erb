@@ -3,14 +3,14 @@
     <div class="w-full sm:w-1/2">
       <h2>Categories</h2>
       <% @categories_all.each do |category| %>
-      <p><a href="/<%= category.slug %>" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name %></a></p>
+      <p><a href="/<%= category.slug %>" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name.capitalize %></a></p>
       <% end %>
       <p><a href="/all-posts" class="no-underline text-gray-700 sm:text-lg text-base">All posts</a></p>
     </div>
     <div class="w-full sm:w-1/2">
       <h2>Glossary</h2>
       <% @categories_all.each do |category| %>
-      <p><a href="/<%= category.slug %>-glossary" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name %></p>
+      <p><a href="/<%= category.slug %>-glossary" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name.capitalize %></p>
       <% end %>
     </div>
   </div>
