@@ -4,6 +4,10 @@ class CategoriesController < ApplicationController
   end
 
   def index
+    @category = Category.find_by(slug:params[:category])
+    @resources = Resource.where(category:@category)
+    @core_articles = CoreArticle.where(category:@category)
+    @category_articles = @resources + @core_articles
   end
 
   def glossary
