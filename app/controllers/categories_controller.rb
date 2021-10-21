@@ -21,12 +21,12 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find_by(slug:params[:category])
     @resource = Resource.find_by(slug:params[:slug])
-    if @resource.category != @category
+    @core_article = CoreArticle.find_by(slug:params[:slug])
+    @post = @resource ? @resource : @core_article
+    if @post.category != @category
       redirect_to '/404'
     end
 
-    @core_article = CoreArticle.find_by(slug:params[:slug])
-    @post = @resource ? @resource : @core_article
     @title = @post.title
     @meta_description = @post.meta_description
     if @post.canonical_url.present?
@@ -39,11 +39,6 @@ class CategoriesController < ApplicationController
     if @post.top_articles.present?
       @top_articles = @post.top_articles.split("<=>")
       @top_articles_urls = @post.top_articles_urls.split("<=>")
-    end
-    if @resource
-      render 'resources/show'
-    elsif @core_article
-      render 'core_articles/show'
     end
   end
 

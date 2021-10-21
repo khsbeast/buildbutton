@@ -1,1 +1,57 @@
-<p>Nothing here yet.</p>
+<% meta_tag("og_title", @post.title) %>
+<% meta_tag("og_description", @post.meta_description) %>
+<% meta_tag("og_url", request.url) %>
+<% meta_tag("og_site_name", "Buildd.co") %>
+<% meta_tag("og_twitter_title", @post.title) %>
+<% meta_tag("og_twitter_description", @post.meta_description) %>
+
+<style>
+html, body {
+  font-family: 'DM Sans', sans-serif !important;
+}
+.top-section. .navbar {
+  font-family: 'Inter', sans-serif;
+}
+</style>
+<div class="mt-8 sm:mx-32 mx-4">
+<section class="top-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
+  <div class="text-center">
+    <h1 class="sm:text-6xl text-4xl font-extrabold text-center title-font text-flamingo-800 m-auto pt-8 pb-2 leading-none tracking-tight"><%= @post.h1 %></h1>
+    <% if @post.h2.present? %>
+    <h2 class="sm:text-2xl text-xl font-light text-center title-font m-auto pt-2 pb-8 leading-snug tracking-tight"><%= @post.h2 %></h2>
+    <% end %>
+  </div>
+  <div>
+  </div>
+</section>
+<section class="blog-section sm:flex flex-none sm:space-x-8 mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:text-lg text-md">
+<div class="sm:w-3/4 sm:mx-auto">
+<% if @post.content.present? %>
+<%= @post.content.html_safe %>
+<% end %>
+</div>
+<div class="sm:w-1/4 sm:mx-auto mt-4 sm:mt-0">
+  <% if @related_articles.present? %>
+  <div class="sm:mb-16 mb-4 sm:mx-2 mx-0 px-2 body-font sm:text-lg text-md">
+    <h3>Related Articles</h3>
+    <div class="bg-gray-100 border-flamingo-800 border-t-4 block my-2 px-4 py-2">
+    <% @related_articles.each_with_index do |article, index| %>
+    <p><a href="<%= @related_articles_urls[index] %>" class="no-underline text-gray-700" target="_blank"><%= article %></a></p>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+  <% if @top_articles.present? %>
+  <div class="sm:my-16 my-4 sm:mx-2 mx-0 px-2 body-font sm:text-lg text-md">
+    <h3>Top Articles</h3>
+    <div class="bg-gray-100 border-flamingo-800 border-t-4 block my-2 px-4 py-2">
+    <% @top_articles.each_with_index do |article, index| %>
+    <p><a href="<%= @top_articles_urls[index] %>" class="no-underline text-gray-700" target="_blank"><%= article %></a></p>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+</section>
+<br/><br/>
+</div>
