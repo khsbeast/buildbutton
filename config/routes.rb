@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'companies/community'
   root 'categories#home'
 
   get 'what_we_learnt_from_our_chat_with_gitlab', to: redirect('p/what_we_learnt_from_our_chat_with_gitlab', status:301)
@@ -44,6 +45,8 @@ Rails.application.routes.draw do
       match "/:id", to: "newsletter#show", via: [:get]
     end
   end
+
+  get ':company/community', to: 'companies#community'
   get ':category-glossary', to:'categories#glossary'
   get '/:category/:slug', to:'categories#show'
   get ':category', to: 'categories#index'

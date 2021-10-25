@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_094031) do
+ActiveRecord::Schema.define(version: 2021_10_25_083404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 2021_10_18_094031) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "core_article_id"
+    t.string "slug"
+    t.index ["core_article_id"], name: "index_companies_on_core_article_id"
   end
 
   create_table "core_articles", force: :cascade do |t|
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_094031) do
     t.string "meta_description"
     t.string "h1"
     t.string "h2"
-    t.string "content"
+    t.text "content"
     t.string "index_title"
     t.date "index_date"
     t.text "top_articles"
@@ -66,7 +69,9 @@ ActiveRecord::Schema.define(version: 2021_10_18_094031) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
+    t.bigint "company_id"
     t.index ["category_id"], name: "index_core_articles_on_category_id"
+    t.index ["company_id"], name: "index_core_articles_on_company_id"
   end
 
   create_table "newsletter_subscribers", force: :cascade do |t|
@@ -112,6 +117,8 @@ ActiveRecord::Schema.define(version: 2021_10_18_094031) do
 
   add_foreign_key "categories", "core_articles"
   add_foreign_key "categories", "resources"
+  add_foreign_key "companies", "core_articles"
   add_foreign_key "core_articles", "categories"
+  add_foreign_key "core_articles", "companies"
   add_foreign_key "resources", "categories"
 end
