@@ -40,6 +40,10 @@ class CategoriesController < ApplicationController
       @top_articles = @post.top_articles.split("<=>")
       @top_articles_urls = @post.top_articles_urls.split("<=>")
     end
+
+    if @core_article.present?
+      @company = @core_article.company
+    end
   end
 
   def create_newsletter_subscriber
