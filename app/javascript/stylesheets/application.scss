@@ -4,28 +4,45 @@
 
 @import "tailwindcss/utilities";
 
+body {
+  @apply bg-gray-100;
+  font-family: 'Lato', sans-serif;
+}
+
 .btn {
   @apply px-4 py-2 bg-blue-600 text-white rounded;
 }
 
 h2 {
-  @apply sm:text-2xl text-xl font-bold text-gray-800 py-2 leading-none tracking-tight;
+  @apply sm:text-2xl text-xl font-bold text-gray-800 py-4 leading-none tracking-tight;
 }
 
 h3 {
-  @apply sm:text-xl text-lg font-bold text-gray-700 py-2 leading-none tracking-tight;
+  @apply sm:text-xl text-lg font-bold text-gray-700 py-3 leading-none tracking-tight;
 }
 
 h4 {
   @apply sm:text-lg text-base font-bold text-gray-600 py-2 leading-none tracking-tight;
 }
 
+p {
+  @apply sm:text-lg text-base py-2;
+}
+
 a {
   @apply underline text-blue-500;
 }
 
+li a {
+  @apply no-underline text-gray-500;
+}
+
 a:hover {
   @apply text-blue-700;
+}
+
+hr {
+  @apply my-2 text-gray-700;
 }
 
 /* for flash_notices() and flash_errors() */

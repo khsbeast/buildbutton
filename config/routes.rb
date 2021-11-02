@@ -39,12 +39,10 @@ Rails.application.routes.draw do
   post '/create_newsletter_subscriber' => "categories#create_newsletter_subscriber", :as => "create_newsletter_subscriber"
 
   get 'all-posts', to:'resources#index'
-  #categories
-  resources :category, path: "remote-work" do
-  	collection do
-      match "/:id", to: "newsletter#show", via: [:get]
-    end
-  end
+
+  get 'startup-stages/:slug', to: 'categories#learning_path'
+  get 'startup-functions/:slug', to: 'categories#learning_path'
+  get 'startup-topics/:slug', to: 'categories#learning_path'
 
   get ':company/community', to: 'companies#community'
   get ':category-glossary', to:'categories#glossary'

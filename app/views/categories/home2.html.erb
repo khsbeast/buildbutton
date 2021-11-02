@@ -1,0 +1,47 @@
+<div class="mx-auto my-16 sm:mx-32 mx-4">
+<section class="sm:mx-2 mx-8 top-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
+  <div class="text-center">
+    <h1 class="sm:text-6xl text-4xl font-extrabold text-center title-font text-flamingo-800 m-auto pt-8 pb-2 leading-none tracking-tight">Don't launch your startup. Build a community.</h1>
+    <h2 class="sm:text-3xl text-xl font-light text-center title-font text-gray-700 m-auto pt-2 pb-8 max-w-3xl leading-snug tracking-tight">A single platform for everything you need to know about building startups and all the tools you need to build a community.</h2>
+  </div>
+</section>
+<section class="sm:mx-2 mx-8 subscriber-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
+<h2 class="sm:text-6xl text-4xl font-extrabold text-center title-font text-gray-900 m-auto mb-4 leading-none tracking-tight">Coming Soon!</h2>
+<div>
+  <h2 class="sm:text-3xl text-xl font-light text-center title-font text-gray-700 m-auto py-4 max-w-3xl leading-snug tracking-tight">Subscribe for early access and launch updates.</h2>
+  <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-2" do |f| %>
+  <center>
+    <div class="sm:flex sm:items-center mb-8 px-4">
+      <div class="sm:w-1/3 px-4 w-full">
+        <input
+          name="newsletter_subscriber[name]"
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500"
+          id="inline-full-name"
+          type="text"
+          placeholder="Name"
+          required="required"
+          oninvalid="this.setCustomValidity('Enter your name here')"
+          oninput="this.setCustomValidity('')">
+      </div>
+      <div class="sm:w-1/3 px-4 w-full mt-2 sm:mt-0">
+        <input
+          name="newsletter_subscriber[email]"
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500 required"
+          id="inline-full-name"
+          type="email"
+          placeholder="Email"
+          required="required"
+          oninvalid="this.setCustomValidity('Enter your email here')"
+          oninput="this.setCustomValidity('')">
+      </div>
+      <div class="sm:w-1/3 px-4 w-full mt-2 sm:mt-0">
+        <button
+          type="submit"
+          class="group relative w-full flex justify-center py-3 px-4 border border-transparent sm:text-xl text-lg leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Get early access</button>
+      </div>
+    </div>
+  </center>
+<% end %>
+</div>
+</section>
+</div>

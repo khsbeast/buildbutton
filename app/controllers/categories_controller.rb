@@ -1,13 +1,71 @@
 class CategoriesController < ApplicationController
 
   def home
+    @startup_stages = StartupStage.pluck(:name, :slug, :logo)
+    @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
+    @startup_functions = StartupFunction.pluck(:name, :slug, :logo)
+    if @startup_functions.length > 5
+      @startup_functions[5 ..] = []
+    end
+    @startup_functions_icons = ["check","filter","users","laptop","street-view"]
+    @startup_topics = StartupTopic.pluck(:name, :slug, :logo)
+    if @startup_topics.length > 5
+      @startup_topics[5 ..] = []
+    end
+    @startup_topics_icons = ["users","user","search","cube","code"]
+
+    @news = CoreArticle.all#where(content_type: "news").sort_by(&:created_at).reverse
+
+    filter = StartupStage.first
+    articles = filter.core_articles
+    @order = filter.order.split(",")
+    @articles = []
+    @order.each do |order|
+      @articles << articles.find(order)
+      articles = articles.drop(order)
+    end
+    articles = articles.sort_by(&:created_at).reverse
+    articles.each do |article|
+      @articles << article
+    end
   end
 
   def index
     @category = Category.find_by(slug:params[:category])
-    @resources = Resource.where(category:@category)
+    @glossary_articles = Resource.where(category:@category)
     @core_articles = CoreArticle.where(category:@category)
-    @category_articles = @resources + @core_articles
+  end
+
+  def learning_path
+    @url = request.url
+
+    if @url.include? ("startup-stages")
+      @path = "startup_stage"
+      @filter = StartupStage.find_by(slug:params[:slug])
+      @filters = StartupStage.pluck(:name, :slug, :logo)
+      @icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
+    elsif @url.include? ("startup-functions")
+      @path = "startup_stage"
+      @filter = StartupFunction.find_by(slug:params[:slug])
+      @filters = StartupFunction.pluck(:name, :slug, :logo)
+    else
+      @path = "startup_stage"
+      @filter = StartupTopic.find_by(slug:params[:slug])
+      @filters = StartupTopic.pluck(:name, :slug, :logo)
+    end
+
+    articles = @filter.core_articles
+    @order = @filter.order.split(",")
+    @articles = []
+    @order.each do |order|
+      @articles << articles.find(order)
+      articles = articles.drop(order)
+    end
+    articles = articles.sort_by(&:created_at).reverse
+    articles.each do |article|
+      @articles << article
+    end
+
   end
 
   def glossary

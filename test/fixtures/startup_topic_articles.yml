@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startup_topic: one
+  core_article: one
+
+two:
+  startup_topic: two
+  core_article: two

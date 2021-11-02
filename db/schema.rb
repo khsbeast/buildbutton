@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_083404) do
+ActiveRecord::Schema.define(version: 2021_11_02_055617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2021_10_25_083404) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
     t.bigint "company_id"
+    t.string "cover_image"
+    t.string "content_type"
     t.index ["category_id"], name: "index_core_articles_on_category_id"
     t.index ["company_id"], name: "index_core_articles_on_company_id"
   end
@@ -104,6 +106,72 @@ ActiveRecord::Schema.define(version: 2021_10_25_083404) do
     t.index ["category_id"], name: "index_resources_on_category_id"
   end
 
+  create_table "startup_function_articles", force: :cascade do |t|
+    t.bigint "startup_function_id", null: false
+    t.bigint "core_article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["core_article_id"], name: "index_startup_function_articles_on_core_article_id"
+    t.index ["startup_function_id"], name: "index_startup_function_articles_on_startup_function_id"
+  end
+
+  create_table "startup_functions", force: :cascade do |t|
+    t.string "name"
+    t.string "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.string "logo"
+    t.string "title"
+    t.text "meta_description"
+    t.string "h1"
+    t.string "h2"
+  end
+
+  create_table "startup_stage_articles", force: :cascade do |t|
+    t.bigint "core_article_id", null: false
+    t.bigint "startup_stage_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["core_article_id"], name: "index_startup_stage_articles_on_core_article_id"
+    t.index ["startup_stage_id"], name: "index_startup_stage_articles_on_startup_stage_id"
+  end
+
+  create_table "startup_stages", force: :cascade do |t|
+    t.string "name"
+    t.string "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.string "logo"
+    t.string "title"
+    t.text "meta_description"
+    t.string "h1"
+    t.string "h2"
+  end
+
+  create_table "startup_topic_articles", force: :cascade do |t|
+    t.bigint "startup_topic_id", null: false
+    t.bigint "core_article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["core_article_id"], name: "index_startup_topic_articles_on_core_article_id"
+    t.index ["startup_topic_id"], name: "index_startup_topic_articles_on_startup_topic_id"
+  end
+
+  create_table "startup_topics", force: :cascade do |t|
+    t.string "name"
+    t.string "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.string "logo"
+    t.string "title"
+    t.text "meta_description"
+    t.string "h1"
+    t.string "h2"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -121,4 +189,10 @@ ActiveRecord::Schema.define(version: 2021_10_25_083404) do
   add_foreign_key "core_articles", "categories"
   add_foreign_key "core_articles", "companies"
   add_foreign_key "resources", "categories"
+  add_foreign_key "startup_function_articles", "core_articles"
+  add_foreign_key "startup_function_articles", "startup_functions"
+  add_foreign_key "startup_stage_articles", "core_articles"
+  add_foreign_key "startup_stage_articles", "startup_stages"
+  add_foreign_key "startup_topic_articles", "core_articles"
+  add_foreign_key "startup_topic_articles", "startup_topics"
 end

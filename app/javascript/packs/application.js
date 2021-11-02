@@ -14,7 +14,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   setTimeout(function(){
     $('.flash-error').fadeOut();
   }, 2000);
@@ -22,4 +22,16 @@ $(document).ready(function() {
   setTimeout(function(){
     $('.flash-success').fadeOut();
   }, 2000);
+
+  $(".rcalc").hover(function(){
+    let user_info_hover = $(this).attr('id').split('-')[1];
+    $("#card-"+user_info_hover).hide();
+    $("#card-"+user_info_hover+"-hover").show();
+  },function(){
+    let user_info_hover = $(this).attr('id').split('-')[1];
+    $("#card-"+user_info_hover).show();
+    $("#card-"+user_info_hover+"-hover").hide();
+  }
+  );
+
 });

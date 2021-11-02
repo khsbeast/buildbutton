@@ -29,7 +29,7 @@ div#wrapper {
 </style>
 <div class="flex-none sm:flex sm:space-x-8 mt-8 sm:mx-32 mx-4 mb-8">
 <div class="w-full sm:w-1/3">
-<div class="shadow-lg rounded-lg border-flamingo-800 border-b-4 py-2 mb-2 bg-gray-100">
+<div class="shadow-lg rounded-lg border-flamingo-800 border-b-4 py-2 mb-2 bg-white">
 <section class="my-6 text-gray-700 body-font mb-4">
     <div class="text-center mb-2">
       <img src="<%= @company.company_logo %>" class="w-20 h-20 m-auto">
@@ -46,37 +46,7 @@ div#wrapper {
   <h2 class="mt-0">Top contributions by <%= @company.company_name %></h2>
 </section>
 <section class="mx-auto my-0">
-  <% len = @articles.length %>
-  <% @articles.each_with_index do |resource, index| %>
-
-  <% if index%2 == 0 %>
-  <div class="flex-none sm:flex sm:space-x-8 sm:mx-0 mx-8">
-  <% end %>
-
-  <div id="rcalc-<%= index %>" class="rcalc w-full sm:w-1/2 mb-4 bg-gray-100 rounded-lg border-flamingo-800 border-b-4">
-    <div id="card-<%= index %>" class="company-card block mb-2 px-4 py-2">
-        <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700">
-        <div class="my-2 sm:text-2xl text-xl font-medium text-black">
-          <span class="mr-1 px-3 border rounded-full bg-gray-200 my-1 text-base text-flamingo-800">#<%= index + 1 %></span>
-        </div>
-        <div class="flex mb-4">
-          <div class="w-full text-xl">
-            <%= resource.index_title %>
-          </div>
-        </div>
-        </a>
-      </div>
-  </div>
-
-  <% if index%2 == 1 %>
-  </div>
-  <% elsif index == len - 1 %>
-  <div class="sm:w-1/2 mb-0">
-  </div>
-  </div>
-  <% end %>
-
-  <% end %>
+  <%= render 'shared/articles_2_in_row', articles:@articles, suffix:"a" %>
 </section>
 </div>
 </div>

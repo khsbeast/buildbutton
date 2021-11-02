@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  core_article: one
+  startup_stage: one
+
+two:
+  core_article: two
+  startup_stage: two
