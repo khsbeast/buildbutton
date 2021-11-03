@@ -40,16 +40,16 @@ class CategoriesController < ApplicationController
     @url = request.url
 
     if @url.include? ("startup-stages")
-      @path = "startup_stage"
+      @path = "startup-stages"
       @filter = StartupStage.find_by(slug:params[:slug])
       @filters = StartupStage.pluck(:name, :slug, :logo)
       @icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
     elsif @url.include? ("startup-functions")
-      @path = "startup_stage"
+      @path = "startup-functions"
       @filter = StartupFunction.find_by(slug:params[:slug])
       @filters = StartupFunction.pluck(:name, :slug, :logo)
     else
-      @path = "startup_stage"
+      @path = "startup-topics"
       @filter = StartupTopic.find_by(slug:params[:slug])
       @filters = StartupTopic.pluck(:name, :slug, :logo)
     end
