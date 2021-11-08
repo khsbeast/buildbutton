@@ -6,6 +6,7 @@ Trestle.resource(:startup_topics) do
   form do |startup_topic|
     text_field :name
     text_field :slug
+    text_field :logo
     text_field :order
     select :core_article_ids, CoreArticle.all.map(), { label: "Core Articles" }, multiple: true
     table CoreArticlesAdmin.table, collection: startup_topic.core_articles.includes(:startup_topics)
