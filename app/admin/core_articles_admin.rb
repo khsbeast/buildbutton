@@ -10,6 +10,7 @@ Trestle.resource(:core_articles) do
 
   form do |core_article|
      text_field :title
+     check_box :coming_soon
      text_field :meta_description
      text_field :h1
      text_field :h2
@@ -27,6 +28,7 @@ Trestle.resource(:core_articles) do
      text_field :cover_image
      select :category_id, Category.all.map(), { label: "Category" }
      select :company_id, Company.all.map(), { label: "Company" }
+     select :author_id, Author.all.map(), { label: "Author" }
      select :startup_stage_ids, StartupStage.all.map(), { label: "Startup Stages" }, multiple:true
      select :startup_function_ids, StartupFunction.all.map(), { label: "Startup Functions" }, multiple:true
      select :startup_topic_ids, StartupTopic.all.map(), { label: "Startup Topics" }, multiple:true

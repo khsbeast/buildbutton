@@ -101,6 +101,7 @@ class CategoriesController < ApplicationController
 
     if @core_article.present?
       @company = @core_article.company
+      @author = @core_article.author
     end
   end
 

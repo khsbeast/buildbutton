@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_055617) do
+ActiveRecord::Schema.define(version: 2021_11_11_035120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "linkedin"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "pic"
+    t.string "bio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -72,6 +84,9 @@ ActiveRecord::Schema.define(version: 2021_11_02_055617) do
     t.bigint "company_id"
     t.string "cover_image"
     t.string "content_type"
+    t.boolean "coming_soon", default: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_core_articles_on_author_id"
     t.index ["category_id"], name: "index_core_articles_on_category_id"
     t.index ["company_id"], name: "index_core_articles_on_company_id"
   end
@@ -186,6 +201,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_055617) do
   add_foreign_key "categories", "core_articles"
   add_foreign_key "categories", "resources"
   add_foreign_key "companies", "core_articles"
+  add_foreign_key "core_articles", "authors"
   add_foreign_key "core_articles", "categories"
   add_foreign_key "core_articles", "companies"
   add_foreign_key "resources", "categories"

@@ -32,7 +32,7 @@ div#wrapper {
 <div class="shadow-lg rounded-lg border-flamingo-800 border-b-4 py-2 mb-2 bg-white">
 <section class="my-6 text-gray-700 body-font mb-4">
     <div class="text-center mb-2">
-      <img src="<%= @company.company_logo %>" class="w-20 h-20 m-auto">
+      <img src="<%= @company.company_logo %>" class="w-20 h-20 m-auto rounded-full border">
       <h1 class="sm:text-2xl text-xl font-bold text-center title-font text-gray-900 my-4"><%= @company.company_name %></h1>
       <% if @company.website_link.present? %><a href="<%= @company.website_link %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "link" %></a><% end %>
       <% if @company.company_twitter.present? %><a href="<%= @company.company_twitter %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "twitter" %></a><% end %>
