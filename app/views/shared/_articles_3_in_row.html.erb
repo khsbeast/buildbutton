@@ -21,14 +21,13 @@
           <%= resource.index_title %>
         </div>
       </div>
-      <% if resource.coming_soon.present? %>
-      <div>
-      <center><span class="ml-1 my-2 px-2 py-1 text-sm text-flamingo-800 bg-blue-100 border border-blue-200 rounded-full">Coming Soon</span></center>
-      </div>
-      <% else %>
+      <% if !resource.coming_soon.present? %>
       </a>
       <% end %>
   </div>
+  <% if resource.coming_soon.present? %>
+  <div class="my-2 py-1 bg-flamingo-800"><center><span class="sm:text-lg text-base text-white font-bold">COMING SOON</span></center></div>
+  <% end %>
   <div id="card-<%= index %><%= suffix %>-hover" class="hidden company-card block my-2 px-4 pb-2">
       <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700 hover:text-gray-700">
       <div class="mx-1 my-6 h-12">
@@ -54,12 +53,6 @@
           <% end %>
         </div>
       </div>
-      <% else %>
-      <div class="my-4">
-        <span class="my-2 px-3 py-1 text-sm text-flamingo-800">
-          <%= fa_icon "cube" %>
-        </span>
-      </div>
       <% end %>
       <% if resource.startup_functions.present? %>
       <div class="my-4">
@@ -79,12 +72,6 @@
           <% end %>
         </div>
       </div>
-      <% else %>
-      <div class="my-4">
-        <span class="my-2 px-3 py-1 text-sm text-flamingo-800">
-          <%= fa_icon "cube" %>
-        </span>
-      </div>
       <% end %>
       <% if resource.startup_topics.present? %>
       <div class="my-4">
@@ -103,12 +90,6 @@
           <% end %>
           <% end %>
         </div>
-      </div>
-      <% else %>
-      <div class="my-4">
-        <span class="my-2 px-3 py-1 text-sm text-flamingo-800">
-          <%= fa_icon "cube" %>
-        </span>
       </div>
       <% end %>
       </a>
