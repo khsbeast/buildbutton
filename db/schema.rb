@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_035120) do
+ActiveRecord::Schema.define(version: 2021_11_12_144216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_035120) do
     t.text "meta_description"
     t.string "h1"
     t.string "h2"
+    t.string "fa_icon"
   end
 
   create_table "startup_stage_articles", force: :cascade do |t|
@@ -163,6 +164,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_035120) do
     t.text "meta_description"
     t.string "h1"
     t.string "h2"
+    t.string "fa_icon"
   end
 
   create_table "startup_topic_articles", force: :cascade do |t|
@@ -185,6 +187,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_035120) do
     t.text "meta_description"
     t.string "h1"
     t.string "h2"
+    t.string "fa_icon"
   end
 
   create_table "users", force: :cascade do |t|
