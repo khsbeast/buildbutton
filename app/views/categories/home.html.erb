@@ -23,8 +23,8 @@ body {
       </div>
       <div id="card-1-hover" class="company-card hidden my-4 px-4">
         <a href="/startup-stages/idea-validation" class="no-underline text-gray-700 hover:text-gray-700">
-          <% @startup_stages.each_with_index do |stages, index| %>
-          <a href="/startup-stages/<%= stages[1] %>" class="no-underline text-gray-700 hover:text-gray-700"><p class="border border-gray-700 rounded-lg px-4 py-2 my-2 hover:bg-flamingo-800 hover:text-white"><%= fa_icon @startup_stages_icons[index] %>&nbsp;&nbsp;<%= stages[0] %></p></a>
+          <% @startup_stages.each do |stages| %>
+          <a href="/startup-stages/<%= stages[1] %>" class="no-underline text-gray-700 hover:text-gray-700"><p class="border border-gray-700 rounded-lg px-4 py-2 my-2 hover:bg-flamingo-800 hover:text-white"><%= fa_icon stages[2] %>&nbsp;&nbsp;<%= stages[0] %></p></a>
           <% end %>
         </a>
       </div>
@@ -39,8 +39,8 @@ body {
       </div>
       <div id="card-2-hover" class="company-card hidden my-4 px-4">
         <a href="/startup-functions/sales" class="no-underline text-gray-700 hover:text-gray-700">
-          <% @startup_functions.each_with_index do |functions, index| %>
-          <a href="/startup-functions/<%= functions[1] %>" class="no-underline text-gray-700 hover:text-gray-700"><p class="border border-gray-700 rounded-lg px-4 py-2 my-2 hover:bg-flamingo-800 hover:text-white"><%= fa_icon @startup_functions_icons[index] %>&nbsp;&nbsp;<%= functions[0] %></p></a>
+          <% @startup_functions.each do |functions| %>
+          <a href="/startup-functions/<%= functions[1] %>" class="no-underline text-gray-700 hover:text-gray-700"><p class="border border-gray-700 rounded-lg px-4 py-2 my-2 hover:bg-flamingo-800 hover:text-white"><%= fa_icon functions[2] %>&nbsp;&nbsp;<%= functions[0] %></p></a>
           <% end %>
         </a>
       </div>
@@ -55,8 +55,8 @@ body {
       </div>
       <div id="card-3-hover" class="company-card hidden my-4 px-4">
         <a href="/startup-topics/hiring" class="no-underline text-gray-700 hover:text-gray-700">
-          <% @startup_topics.each_with_index do |topics, index| %>
-          <a href="/startup-topics/<%= topics[1] %>" class="no-underline text-gray-700 hover:text-gray-700"><p class="border border-gray-700 rounded-lg px-4 py-2 my-2 hover:bg-flamingo-800 hover:text-white"><%= fa_icon @startup_topics_icons[index] %>&nbsp;&nbsp;<%= topics[0] %></p></a>
+          <% @startup_topics.each_with_index do |topics| %>
+          <a href="/startup-topics/<%= topics[1] %>" class="no-underline text-gray-700 hover:text-gray-700"><p class="border border-gray-700 rounded-lg px-4 py-2 my-2 hover:bg-flamingo-800 hover:text-white"><%= fa_icon topics[2] %>&nbsp;&nbsp;<%= topics[0] %></p></a>
           <% end %>
         </a>
       </div>

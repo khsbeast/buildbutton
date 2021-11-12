@@ -1,14 +1,14 @@
 class CategoriesController < ApplicationController
 
   def home
-    @startup_stages = StartupStage.pluck(:name, :slug, :logo)
+    @startup_stages = StartupStage.pluck(:name, :slug, :fa_icon)
     @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
-    @startup_functions = StartupFunction.pluck(:name, :slug, :logo)
+    @startup_functions = StartupFunction.pluck(:name, :slug, :fa_icon)
     if @startup_functions.length > 5
       @startup_functions[5 ..] = []
     end
     @startup_functions_icons = ["check","filter","users","laptop","street-view"]
-    @startup_topics = StartupTopic.pluck(:name, :slug, :logo)
+    @startup_topics = StartupTopic.pluck(:name, :slug, :fa_icon)
     if @startup_topics.length > 5
       @startup_topics[5 ..] = []
     end
