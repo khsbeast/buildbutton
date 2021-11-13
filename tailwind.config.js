@@ -34,6 +34,8 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      rose: colors.rose,
+      'light-blue': colors.lightBlue,
       flamingo: {
           '50':  '#f6f5fa',
           '100': '#f2e7fa',
@@ -70,7 +72,19 @@ module.exports = {
           '800': '#5c7f7f',
           '900': '#4c6363',
         },
-        rose: {
+        fuchsia: {
+          '50':  '#f7f0f7',
+          '100': '#f0e1f0',
+          '200': '#e7d1e7',
+          '300': '#dcc2dc',
+          '400': '#c9a9c9',
+          '500': '#b78eb7',
+          '600': '#a87da8',
+          '700': '#976d97',
+          '800': '#7f5c7f',
+          '900': '#664c63',
+        },
+        orange: {
           '50':  '#f7f0f7',
           '100': '#f0e1f0',
           '200': '#e7d1e7',

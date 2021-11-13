@@ -28,7 +28,7 @@
   <% if resource.coming_soon.present? %>
   <div class="my-2 py-1 bg-flamingo-800"><center><span class="sm:text-lg text-base text-white font-bold">COMING SOON</span></center></div>
   <% end %>
-  <div id="card-<%= index %><%= suffix %>-hover" class="hidden company-card block my-2 px-4 pb-2">
+  <div id="card-<%= index %><%= suffix %>-hover" class="hidden company-card block my-2 px-4 pb-4">
       <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700 hover:text-gray-700">
       <div class="mx-1 my-6 h-12">
         <div class="sm:text-lg text-base text-center">
