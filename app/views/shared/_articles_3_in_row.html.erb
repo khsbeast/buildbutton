@@ -41,7 +41,7 @@
           <%= fa_icon "cube" %>
         </span>
         <% resource.startup_stages.each_with_index do |stage, index| %>
-          <% if sindex < 2 %>
+          <% if index < 2 %>
           <span class="ml-1 my-2 px-2 py-1 text-sm text-flamingo-800 bg-yellow-100 border border-yellow-200 rounded-full">
             <%= stage.name %>
           </span>
