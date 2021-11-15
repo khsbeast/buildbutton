@@ -58,6 +58,22 @@ hr {
   @apply my-2 text-gray-700;
 }
 
+ol {
+  @apply list-decimal pl-8;
+}
+
+.toc {
+	@apply bg-gray-100 border border-gray-100 rounded-lg pb-2 my-2;
+}
+
+.toc a {
+	@apply text-gray-700 no-underline;
+}
+
+.toc a:hover {
+	@apply px-2 py-1 bg-flamingo-200 transition-all duration-500;
+}
+
 /* for flash_notices() and flash_errors() */
 
 div.flash-error,
