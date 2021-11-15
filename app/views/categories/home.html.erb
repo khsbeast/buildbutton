@@ -10,8 +10,9 @@ body {
     <h2 class="sm:text-2xl text-lg font-light text-center title-font text-gray-700 m-auto pt-2 pb-8 max-w-3xl leading-snug tracking-tight">Your startup is unique. Design your own learning journey. We have you covered.</h2>
   </div>
 </section>
-<div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-flamingo-500 to-flamingo-800 -rotate-1 sm:mb-24 mb-12">
-<section class="sm:mx-24 mx-4 category-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
+<div class="bg-gray-200 rounded-3xl py-1 sm:mb-24 mb-12">
+<div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-flamingo-500 to-flamingo-800 -rotate-1">
+<section class="sm:mx-24 mx-4 category-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font transform rotate-1">
   <div class="sm:flex flex-none sm:space-x-8 px-8 py-4">
     <div id="rcalc-1" class="rcalc w-full sm:w-1/3 my-4 bg-white border-flamingo-800 border-b-4 rounded-lg py-2">
       <div id="card-1" class="company-card block sm:my-4 px-2">
@@ -64,6 +65,7 @@ body {
   </div>
 </section>
 </div>
+</div>
 <div class="sm:mb-24 mb-12">
 <section class="sm:mx-24 mx-4 subscriber-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:py-4 sm:px-0 px-4 border rounded-lg border-flamingo-800 border-b-4">
 <div>
@@ -109,10 +111,12 @@ body {
 <% if @news.present? %>
 <h2 class="sm:text-4xl text-xl font-bold text-center title-font text-gray-700 m-auto sm:pt-6 pb-2 pt-2 max-w-3xl leading-snug tracking-tight">A new handcrafted peice of content each day</h2>
 <h3 class="sm:text-xl text-base font-light text-center title-font text-gray-700 m-auto pt-2 pb-6 max-w-3xl leading-snug tracking-tight">Your startups don't take a break. Netiher do we - new content each day.</h3>
-<div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-purple-500 to-indigo-500 rotate-1 sm:mb-24 mb-12">
-<section class="sm:mx-24 mx-4news-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:pt-12 pt-4 pb-4">
+<div class="bg-gray-200 rounded-3xl py-1 sm:mb-24 mb-12">
+<div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-purple-500 to-indigo-500 rotate-1">
+<section class="sm:mx-24 mx-4news-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:pt-12 pt-4 pb-4 transform -rotate-1">
   <div><%= render 'shared/articles_3_in_row', articles:@news, suffix:"a" %></div>
 </section>
+</div>
 </div>
 <% end %>
 
@@ -219,10 +223,11 @@ body {
 
 <h2 class="sm:text-4xl text-xl font-bold text-center title-font text-gray-700 m-auto sm:pt-6 pb-2 pt-2 max-w-3xl leading-snug tracking-tight"><span class="bg-flamingo-100 px-2 py-1">Buildd</span> a startup in 6 months</h2>
 <h3 class="sm:text-xl text-base font-light text-center title-font text-gray-700 m-auto pt-2 pb-4 max-w-3xl leading-snug tracking-tight">A single learning platform for everything you need to know about building startups.</h3>
-<div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-red-400 to-pink-500 -rotate-1 sm:mb-24 mb-12">
-<section class="sm:mx-24 mx-4 threads-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:pt-12 pt-4 pb-4">
+<div class="bg-gray-200 rounded-3xl py-1 sm:mb-24 mb-12">
+<div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-red-400 to-pink-500 -rotate-1">
+<section class="sm:mx-24 mx-4 threads-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:pt-12 pt-4 pb-4 transform rotate-1">
   <div><%= render 'shared/articles_3_in_row', articles:@articles, suffix:"b" %></div>
 </section>
 </div>
-
+</div>
 </div>
