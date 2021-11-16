@@ -35,7 +35,13 @@
   </div>
   <div class="sm:w-2/3">
     <section class="mx-auto my-0">
+      <% if @articles.present? %>
       <%= render 'shared/articles_2_in_row', articles:@articles, suffix:"a" %>
+      <% else %>
+      <div class="text-center">
+        <p class="text-flamingo-800 text-xl">Coming Soon!</p>
+      </div>
+      <% end %>
     </section>
   </div>
 </div>
