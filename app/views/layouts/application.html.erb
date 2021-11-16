@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @title.present? ? @title : "Buildd - Discover the best content on startups, tech & remote working" %></title>
+    <title><%= @title.present? ? @title : "Buildd startups by learning lessons from real entrepreneurs" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="description" content="<%= @meta_description.present? ? @meta_description : 'Find everything you need to know launch your startup faster - education, community, tools.' %>"/>
+    <meta name="description" content="<%= @meta_description.present? ? @meta_description : 'Your startup is unique. Design your own learning journey. We have you covered.' %>"/>
 
     <% if @meta_tags %>
       <% @meta_tags.each do |k,v| %>
@@ -23,16 +23,17 @@
       <link rel="canonical" href="<%= @canonical_url %>"/>
     <% end %>
 
-    <meta property="og:title" content="<% if yield(:meta_og_title).present? %><%= yield(:meta_og_title) %><% else %>Buildd<% end %>">
-    <meta property="og:description" content="<% if yield(:meta_og_description).present? %><%= yield(:meta_og_description) %><% else %>Community to discuss, learn and grow remote work.<% end %>">
-    <meta property="og:image" content="<% if yield(:meta_og_image).present? %><%= yield(:meta_og_image) %><% else %>https://ik.imagekit.io/remotetools/remoteness_calculator_logos/rc_screenshot_ANaQNZ1Zz.png<% end %>">
-    <meta property="og:url" content="<% if yield(:meta_og_url).present? %><%= yield(:meta_og_url) %><% else %>https://remoteclan.com<% end %>">
-    <meta property="og:site_name" content="<% if yield(:meta_og_site_name).present? %><%= yield(:meta_og_site_name) %><% else %>Remote Clan<% end %>">
+    <meta property="og:title" content="<% if yield(:meta_og_title).present? %><%= yield(:meta_og_title) %><% else %>Buildd startups by learning lessons from real entrepreneurs<% end %>">
+    <meta property="og:description" content="<% if yield(:meta_og_description).present? %><%= yield(:meta_og_description) %><% else %>Your startup is unique. Design your own learning journey. We have you covered.<% end %>">
+    <meta property="og:image" content="<% if yield(:meta_og_image).present? %><%= yield(:meta_og_image) %><% else %>https://buildd.s3.amazonaws.com/twitter_preview.png<% end %>">
+    <meta property="og:url" content="<% if yield(:meta_og_url).present? %><%= yield(:meta_og_url) %><% else %>https://buildd.co<% end %>">
+    <meta property="og:site_name" content="<% if yield(:meta_og_site_name).present? %><%= yield(:meta_og_site_name) %><% else %>Buildd<% end %>">
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="<% if yield(:meta_og_twitter_title).present? %><%= yield(:meta_og_twitter_title) %><% else %>Remote Clan<% end %>">
-    <meta name="twitter:description" content="<% if yield(:meta_og_twitter_description).present? %><%= yield(:meta_og_twitter_description) %><% else %>Community to discuss, learn and grow remote work.<% end %>">
-    <meta name="twitter:image" content="<% if yield(:meta_og_twitter_image).present? %><%= yield(:meta_og_twitter_image) %><% else %>https://ik.imagekit.io/remotetools/remoteness_calculator_logos/rc_screenshot_ANaQNZ1Zz.png<% end %>">
+    <meta name="twitter:title" content="<% if yield(:meta_og_twitter_title).present? %><%= yield(:meta_og_twitter_title) %><% else %>Buildd<% end %>">
+    <meta name="twitter:description" content="<% if yield(:meta_og_twitter_description).present? %><%= yield(:meta_og_twitter_description) %><% else %>Buildd startups by learning lessons from real entrepreneurs<% end %>">
+    <meta name="twitter:image" content="<% if yield(:meta_og_twitter_image).present? %><%= yield(:meta_og_twitter_image) %><% else %>https://buildd.s3.amazonaws.com/twitter_preview.png<% end %>">
 
+    <link rel="shortcut icon" href="/favicon.ico" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-92DE5Y7J2F"></script>
     <script>
