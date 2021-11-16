@@ -114,7 +114,7 @@ body {
 <div class="bg-gray-200 rounded-3xl py-1 sm:mb-24 mb-12">
 <div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-purple-500 to-indigo-500 rotate-1">
 <section class="sm:mx-24 mx-4news-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:pt-12 pt-4 pb-4 transform -rotate-1">
-  <div><%= render 'shared/articles_3_in_row', articles:@news, suffix:"a" %></div>
+  <div><%= render 'shared/articles_3_in_row', articles:@news[0..2], suffix:"a" %></div>
 </section>
 </div>
 </div>

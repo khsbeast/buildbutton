@@ -74,6 +74,40 @@ ol {
 	@apply px-2 py-1 bg-flamingo-200 transition-all duration-500;
 }
 
+.multiple-border-radius {
+	border: solid 3px #6e7491;
+	padding: 5px 10px;
+	border-top-left-radius: 37px 140px;
+  	border-top-right-radius: 23px 130px;
+  	border-bottom-left-radius: 110px 19px;
+  	border-bottom-right-radius: 120px 24px;
+}
+
+.sketchy {
+    padding: 4rem 8rem;
+    display: inline-block;
+    border: 3px solid #333333;
+    font-size: 2.5rem;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+    
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+}
+
 /* for flash_notices() and flash_errors() */
 
 div.flash-error,

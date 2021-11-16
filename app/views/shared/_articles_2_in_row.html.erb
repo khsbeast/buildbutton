@@ -16,8 +16,8 @@
       <div class>
         <img class="mx-auto w-24 h-24" src="<%= resource.cover_image %>"/>
       </div>
-      <div class="mx-1 my-4 text-center h-16">
-        <div class="sm:text-lg text-base">
+      <div class="mx-1 my-4 h-20">
+        <div class="sm:text-xl text-base text-center font-bold">
           <%= resource.index_title %>
         </div>
       </div>
@@ -30,7 +30,7 @@
   <% end %>
   <div id="card-<%= index %><%= suffix %>-hover" class="hidden company-card block my-2 px-4 pb-4">
       <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700 hover:text-gray-700">
-      <div class="mx-1 my-6 h-12">
+      <div class="mx-1 my-6 h-16">
         <div class="sm:text-lg text-base text-center">
           <%= resource.index_title %>
         </div>
