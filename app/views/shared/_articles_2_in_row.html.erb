@@ -2,22 +2,22 @@
 <% articles.each_with_index do |resource, index| %>
 
 <% if index%2 == 0 %>
-<div class="flex-none sm:flex sm:space-x-8 sm:mx-4 mx-8">
+<div class="flex-none md:flex md:space-x-8 md:mx-4 mx-8">
 <% end %>
 
-<div <% if !resource.coming_soon.present? %>id="rcalc-<%= index %><%= suffix %>"<% end %> class="rcalc w-full sm:w-1/2 mb-6 bg-white border-flamingo-800 border-b-4 rounded-lg py-2">
+<div <% if !resource.coming_soon.present? %>id="rcalc-<%= index %><%= suffix %>"<% end %> class="rcalc w-full md:w-1/2 mb-6 bg-white border-flamingo-800 border-b-4 rounded-lg py-2">
   <div id="card-<%= index %><%= suffix %>" class="company-card block my-2 px-4">
       <% if !resource.coming_soon.present? %>
       <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700 hover:text-gray-700">
       <% end %>
-      <div class="my-2 sm:text-2xl text-xl font-medium text-black">
+      <div class="my-2 md:text-2xl text-xl font-medium text-black">
         <span class="mr-1 px-4 py-1 border rounded-full bg-gray-100 mb-1 text-base text-flamingo-800">#<%= index + 1 %></span>
       </div>
       <div class>
         <img class="mx-auto w-24 h-24" src="<%= resource.cover_image %>"/>
       </div>
       <div class="mx-1 my-4 h-20">
-        <div class="sm:text-xl text-base text-center font-bold">
+        <div class="md:text-xl text-base text-center font-bold">
           <%= resource.index_title %>
         </div>
       </div>
@@ -26,12 +26,12 @@
       <% end %>
   </div>
   <% if resource.coming_soon.present? %>
-  <div class="my-2 py-1 bg-flamingo-800"><center><span class="sm:text-lg text-base text-white font-bold">COMING SOON</span></center></div>
+  <div class="my-2 py-1 bg-flamingo-800"><center><span class="md:text-lg text-base text-white font-bold">COMING SOON</span></center></div>
   <% end %>
   <div id="card-<%= index %><%= suffix %>-hover" class="hidden company-card block my-2 px-4 pb-4">
       <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700 hover:text-gray-700">
       <div class="mx-1 my-6 h-16">
-        <div class="sm:text-lg text-base text-center">
+        <div class="md:text-lg text-base text-center">
           <%= resource.index_title %>
         </div>
       </div>
@@ -84,7 +84,7 @@
 <% if index%2 == 1 %>
 </div>
 <% elsif index == len - 1 %>
-<div class="sm:w-1/2 mb-0">
+<div class="md:w-1/2 mb-0">
 </div>
 </div>
 <% end %>

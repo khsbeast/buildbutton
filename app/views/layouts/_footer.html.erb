@@ -1,16 +1,16 @@
-<div class="border-t-2 sm:mt-32 mt-2 sm:mb-8 mb-2">
-  <div class="mx-auto sm:flex sm:space-x-8 flex-none sm:mx-32 mx-4 mt-4">
-    <div class="w-full sm:w-1/2">
+<div class="border-t-2 md:mt-32 mt-2 md:mb-8 mb-2">
+  <div class="mx-auto md:flex md:space-x-8 flex-none md:mx-32 mx-4 mt-4">
+    <div class="w-full md:w-1/2">
       <h2 class="py-2">Categories</h2>
       <% @categories_all.each do |category| %>
-      <p class="py-1"><a href="/<%= category.slug %>" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name.capitalize %></a></p>
+      <p class="py-1"><a href="/<%= category.slug %>" class="no-underline text-gray-700 md:text-lg text-base"><%= category.name.capitalize %></a></p>
       <% end %>
-      <p class="py-1"><a href="/all-posts" class="no-underline text-gray-700 sm:text-lg text-base">All posts</a></p>
+      <p class="py-1"><a href="/all-posts" class="no-underline text-gray-700 md:text-lg text-base">All posts</a></p>
     </div>
-    <div class="w-full sm:w-1/2">
+    <div class="w-full md:w-1/2">
       <h2 class="py-2">Glossary</h2>
       <% @categories_all.each do |category| %>
-      <p class="py-1"><a href="/<%= category.slug %>-glossary" class="no-underline text-gray-700 sm:text-lg text-base"><%= category.name.capitalize %></p>
+      <p class="py-1"><a href="/<%= category.slug %>-glossary" class="no-underline text-gray-700 md:text-lg text-base"><%= category.name.capitalize %></p>
       <% end %>
     </div>
   </div>

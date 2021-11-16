@@ -7,35 +7,35 @@
 <% meta_tag("og_image", @post.social_media_preview_image) %>
 <% meta_tag("og_twitter_image", @post.social_media_preview_image) %>
 
-<div class="mt-8 sm:mx-32 mx-4">
-<!--<section class="top-section mt-0 sm:mt-4 mb-4 text-gray-700 body-font">
+<div class="mt-8 md:mx-32 mx-4">
+<!--<section class="top-section mt-0 md:mt-4 mb-4 text-gray-700 body-font">
   <div class="text-center">
   </div>
   <div>
   </div>
 </section>-->
-<section class="blog-section sm:flex flex-none sm:space-x-8 mt-0 sm:mt-4 mb-4 text-gray-700 body-font sm:text-lg text-sm">
+<section class="blog-section md:flex flex-none md:space-x-8 mt-0 md:mt-4 mb-4 text-gray-700 body-font md:text-lg text-sm">
 
-<div class="sm:w-3/4 sm:mx-auto bg-white border border-white rounded-lg sm:pb-4 pb-2">
+<div class="md:w-3/4 md:mx-auto bg-white border border-white rounded-lg md:pb-4 pb-2">
   <div class="mb-4 bg-gray-300 py-1 border border-gray-300 rounded-lg">
-    <div class="border border-flamingo-800 rounded-lg bg-gradient-to-br from-purple-500 to-flamingo-800 sm:px-12 px-2 transform -rotate-1">
-      <h1 class="sm:text-3xl text-xl text-center title-font font-bold text-white m-auto <% if @post.h2.present? %>pt-8 pb-2<% else %>py-12<% end %> leading-none tracking-tight px-4 transform rotate-1"><%= @post.h1 %></h1>
+    <div class="border border-flamingo-800 rounded-lg bg-gradient-to-br from-purple-500 to-flamingo-800 md:px-12 px-2 transform -rotate-1">
+      <h1 class="md:text-3xl text-xl text-center title-font font-bold text-white m-auto <% if @post.h2.present? %>pt-8 pb-2<% else %>py-12<% end %> leading-none tracking-tight px-4 transform rotate-1"><%= @post.h1 %></h1>
       <% if @post.h2.present? %>
-      <h2 class="sm:text-xl text-base text-gray-100 font-light text-center title-font m-auto pt-2 pb-8 leading-snug tracking-tight px-2 transform rotate-1"><%= @post.h2 %></h2>
+      <h2 class="md:text-xl text-base text-gray-100 font-light text-center title-font m-auto pt-2 pb-8 leading-snug tracking-tight px-2 transform rotate-1"><%= @post.h2 %></h2>
       <% end %>
     </div>
   </div>
-  <div class="sm:px-12 px-2">
+  <div class="md:px-12 px-2">
     <% if @post.content.present? %>
     <%= @post.content.html_safe %>
     <% end %>
   </div>
 </div>
 
-<div class="sm:w-1/4 sm:mx-auto mt-4 sm:mt-0">
+<div class="md:w-1/4 md:mx-auto mt-4 md:mt-0">
   
     <% if @related_articles.present? %>
-    <div class="sm:mb-8 mb-4 sm:mx-2 mx-0 px-2 py-2 body-font sm:text-base text-sm bg-white border border-white rounded-lg">
+    <div class="md:mb-8 mb-4 md:mx-2 mx-0 px-2 py-2 body-font md:text-base text-sm bg-white border border-white rounded-lg">
       <h3 class="text-center text-center mb-0 pb-2 font-normal text-gray-700 border-b-2 border-flamingo-800">Related Articles</h3>
       <div class="px-4 py-2">
         <% @related_articles.each_with_index do |article, index| %>
@@ -45,7 +45,7 @@
     </div>
     <% end %>
     <% if @top_articles.present? %>
-    <div class="sm:mb-8 mb-4 sm:mx-2 mx-0 px-2 py-2 body-font sm:text-base text-sm bg-white border border-white rounded-lg">
+    <div class="md:mb-8 mb-4 md:mx-2 mx-0 px-2 py-2 body-font md:text-base text-sm bg-white border border-white rounded-lg">
       <h3 class="text-center mb-0 pb-2 font-normal text-gray-700 border-b-2 border-flamingo-800">Top Articles</h3>
       <div class="px-4 py-2">
       <% @top_articles.each_with_index do |article, index| %>
@@ -64,9 +64,9 @@
     <p><img class="w-16 h-16 rounded-full border" src="<%= @core_article.author.pic %>"/></p>
     <p><%= @author.name %></p>
     <div class="text-center mb-2">
-        <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "link" %></a><% end %>
-        <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "twitter" %></a><% end %>
-        <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "linkedin" %></a><% end %>
+        <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="md:text-xl text-lg mx-2"><%= fa_icon "link" %></a><% end %>
+        <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="md:text-xl text-lg mx-2"><%= fa_icon "twitter" %></a><% end %>
+        <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="md:text-xl text-lg mx-2"><%= fa_icon "linkedin" %></a><% end %>
     </div>
     </a>
     </center>
