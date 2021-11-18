@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     end
     @startup_topics_icons = ["users","user","search","cube","code"]
 
-    @news = CoreArticle.all#where(content_type: "news").sort_by(&:created_at).reverse
+    @news = CoreArticle.where(content_type: "news").sort_by(&:created_at).reverse
 
     filter = StartupStage.first
     articles = filter.core_articles
