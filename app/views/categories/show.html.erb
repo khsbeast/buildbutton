@@ -78,7 +78,7 @@
       <h3 class="font-normal text-gray-700">Contributed by</h3>
       <a href="/<%= @company.slug %>/community" class="no-underline text-gray-700 font-bold" target="_blank">
       <p><img class="w-16 h-16 rounded-full border" src="<%= @company.company_logo %>"/></p>
-      <p><%= @company.company_name %></p>
+      <p><%= @company.company_name %><% if @company.company_twitter.present? %><a href="<%= @company.company_twitter %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "twitter" %></a><% end %></p>
       </a>
       </center>
     </div>
