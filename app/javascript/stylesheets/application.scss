@@ -74,6 +74,10 @@ ol {
 	@apply px-2 py-1 bg-flamingo-200 transition-all duration-300;
 }
 
+.tldr {
+	@apply bg-gray-100 border border-gray-100 rounded-lg pb-2 my-2;
+}
+
 /* for flash_notices() and flash_errors() */
 
 div.flash-error,
