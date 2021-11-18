@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
       @filters = StartupTopic.pluck(:name, :slug, :logo)
     end
 
-    articles = @filter.core_articles
+    articles = @filter.core_articles.where.not(content_type: "news")
     @order = @filter.order.split(",")
     @articles = []
     @order.each do |order|
