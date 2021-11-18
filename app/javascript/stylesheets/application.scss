@@ -75,11 +75,11 @@ ol {
 }
 
 .tldr {
-	@apply bg-gray-100 border border-gray-100 rounded-lg pb-2 my-2;
+	@apply bg-gray-100 border border-gray-100 rounded-lg pb-6 mt-6 mb-2;
 }
 
 .tldr ol, .tldr ul {
-	@apply pr-2;
+	@apply pl-10 pr-4;
 }
 
 /* for flash_notices() and flash_errors() */
