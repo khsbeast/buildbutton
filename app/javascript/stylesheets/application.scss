@@ -46,10 +46,6 @@ a {
   @apply underline text-blue-500;
 }
 
-li a {
-  @apply no-underline text-gray-500;
-}
-
 a:hover {
   @apply text-blue-700;
 }
@@ -60,6 +56,10 @@ hr {
 
 ol {
   @apply list-decimal pl-8;
+}
+
+ul {
+  @apply list-disc pl-8;
 }
 
 .toc {
