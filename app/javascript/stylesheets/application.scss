@@ -18,13 +18,13 @@ h2 {
 }
 
 .tilt1 {
-	@apply py-1 mb-3 mt-6 px-4 inline-flex bg-gradient-to-br from-flamingo-100 to-flamingo-200 transform -rotate-1;
+	@apply py-1 mb-3 mt-16 px-4 inline-flex bg-gradient-to-br from-flamingo-100 to-flamingo-200 transform -rotate-1;
   }
 .tilt2 {
-	@apply py-1 mb-3 mt-6 px-4 inline-flex bg-gradient-to-br from-red-100 to-pink-200 transform -rotate-1;
+	@apply py-1 mb-3 mt-16 px-4 inline-flex bg-gradient-to-br from-red-100 to-pink-200 transform -rotate-1;
  }
 .tilt3 {
-	@apply py-1 mb-3 mt-6 px-4 inline-flex bg-gradient-to-br from-purple-100 to-indigo-200 transform -rotate-1;
+	@apply py-1 mb-3 mt-16 px-4 inline-flex bg-gradient-to-br from-purple-100 to-indigo-200 transform -rotate-1;
 }
 .tilt1 span, .tilt2 span, .tilt3 span{
 	@apply transform rotate-1;
