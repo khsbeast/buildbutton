@@ -8,13 +8,7 @@
 <% meta_tag("og_twitter_image", @post.social_media_preview_image) %>
 
 <div class="mt-8 md:mx-32 mx-4">
-<!--<section class="top-section mt-0 md:mt-4 mb-4 text-gray-700 body-font">
-  <div class="text-center">
-  </div>
-  <div>
-  </div>
-</section>-->
-<section class="blog-section md:flex flex-none md:space-x-8 mt-0 md:mt-4 mb-4 text-gray-700 body-font md:text-lg text-sm">
+<section class="blog-section md:flex flex-none md:space-x-8 mt-0 md:mt-4 mb-4 text-gray-700 body-font md:text-lg">
 
 <div class="md:w-3/4 md:mx-auto bg-white border border-white rounded-lg md:pb-4 pb-2">
   <div class="mb-4 bg-gray-300 py-1 border border-gray-300 rounded-lg">
@@ -104,7 +98,7 @@
   <% else %>
   <div class="sticky top-10 px-3 py-3 mx-2 border rounded bg-white">
     <div class="text-center py-2 px-1">
-        Subscribe for early access and launch updates.
+        Don't just dream. Buildd your startup today.
     </div>
     <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-2" do |f| %>
     <center>
