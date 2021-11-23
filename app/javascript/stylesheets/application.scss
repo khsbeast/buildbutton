@@ -100,6 +100,10 @@ ol {
 	@apply py-2;
 }
 
+.tldr .tilt1, .tldr .tilt2, .tldr .tilt3, .toc .tilt1, .toc .tilt2, .toc .tilt3 {
+	@apply mt-6;
+}
+
 /* for flash_notices() and flash_errors() */
 
 div.flash-error,
