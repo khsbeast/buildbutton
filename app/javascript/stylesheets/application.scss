@@ -63,7 +63,7 @@ ol {
 }
 
 .toc {
-	@apply bg-gray-100 border border-gray-100 rounded-lg pb-2 my-2;
+	@apply bg-gray-100 border border-gray-100 rounded-lg pb-2 my-2 font-bold;
 }
 
 .toc a {
@@ -79,11 +79,25 @@ ol {
 }
 
 .tldr ol, .tldr ul {
-	@apply pl-10 pr-4;
+	@apply pl-14 pr-4;
+}
+
+.toc ol, .toc ul {
+	@apply pl-14;
 }
 
 .blockquote {
 	@apply bg-gray-100 border-l-4 border-gray-500 px-4 py-2 my-4;
+}
+
+.blog-section-body p {
+	line-height: 2.25rem !important;	
+	@apply py-4;
+}
+
+.blog-section-body li {
+	line-height: 2.25rem !important;
+	@apply py-2;
 }
 
 /* for flash_notices() and flash_errors() */
