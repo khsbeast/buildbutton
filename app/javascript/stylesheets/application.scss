@@ -55,11 +55,15 @@ hr {
 }
 
 ol {
-  @apply list-decimal pl-8 pt-0 mt-0;
+  @apply list-decimal pl-8;
+  padding-top:0px !important;
+  margin-top:0px !important;
 }
 
 ul {
-  @apply list-disc pl-8 pt-0 mt-0;
+  @apply list-disc pl-8;
+  padding-top:0px !important;
+  margin-top:0px !important;
 }
 
 .toc {
