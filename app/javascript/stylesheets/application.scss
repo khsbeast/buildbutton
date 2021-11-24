@@ -55,11 +55,11 @@ hr {
 }
 
 ol {
-  @apply list-decimal pl-8;
+  @apply list-decimal pl-8 pt-0 mt-0;
 }
 
 ul {
-  @apply list-disc pl-8;
+  @apply list-disc pl-8 pt-0 mt-0;
 }
 
 .toc {
