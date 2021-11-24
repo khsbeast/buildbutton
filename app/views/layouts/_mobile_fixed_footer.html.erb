@@ -1,5 +1,5 @@
-<div class="fixed bottom-0 bg-gray-200 w-full pt-2 pb-4 px-2">
-    <div class="subscribe_compressed hidden">
+<div class="fixed bottom-0 bg-gray-200 w-full">
+    <div class="subscribe_compressed hidden pt-2 pb-4 px-2">
     <div class="subscribe_compressed_close text-right px-4 text-md underline">Close (X)</div>
     <center class="px-4">
         <h2 class="pt-1">Buildd startups by learning lessons from real entrepreneurs</h2>
@@ -7,7 +7,7 @@
             class="subscribe_compressed_button group relative justify-center py-1 px-4 border border-transparent md:text-lg leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Get 1 new handcrafted article each day</button>
     </center>
     </div>
-    <div class="subscribe_expand hidden">
+    <div class="subscribe_expand hidden pt-2 pb-4 px-2">
     <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-1" do |f| %>
     <center>
         <div class="w-full mb-2">

@@ -36,12 +36,16 @@ $(document).on('turbolinks:load', function() {
 
   $(".subscribe_compressed_button").click(function(){
     $(".subscribe_compressed").hide();
+    $(".subscribe_compressed").addClass('subscribe_compressed_hidden');
     $(".subscribe_expand").show();
+    $(".subscribe_expand").removeClass('subscribe_expand_hidden');
   });
 
   $(".subscribe_expand_button").click(function(){
     $(".subscribe_compressed").show();
+    $(".subscribe_compressed").removeClass('subscribe_compressed_hidden');
     $(".subscribe_expand").hide();
+    $(".subscribe_expand").addClass('subscribe_expand_hidden');
   });
 
   $(".subscribe_compressed_close").click(function(){
@@ -52,7 +56,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).scroll(function() {
     var y = $(this).scrollTop();
-      if (y > 100 && getCookie('popups') != 'seen') {
+      if (y > 100 && getCookie('popups') != 'seen' && !$('.subscribe_compressed').hasClass('subscribe_compressed_hidden')) {
         $('.subscribe_compressed').fadeIn();
       } else {
         $('.subscribe_compressed').fadeOut();
