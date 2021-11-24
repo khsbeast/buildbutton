@@ -104,6 +104,17 @@ ul {
 	@apply mt-6;
 }
 
+@media only screen and (max-width: 1023px) {
+	.view-on-desktop-only {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 1023px){
+	.view-on-mobile-only {
+	  display: none;
+	}
+}
 /* for flash_notices() and flash_errors() */
 
 div.flash-error,

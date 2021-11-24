@@ -67,5 +67,10 @@
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
+    <% if @curr_url.present? && @curr_url == "category_show" %>
+    <div class="md:hidden">
+      <%= render 'layouts/mobile_fixed_footer' %>
+    </div>
+    <% end %>
   </body>
 </html>

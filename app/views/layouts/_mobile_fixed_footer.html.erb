@@ -1,0 +1,46 @@
+<div class="fixed bottom-0 bg-gray-200 w-full pt-2 pb-4 px-2">
+    <div class="subscribe_compressed hidden">
+    <div class="subscribe_compressed_close text-right px-4 text-md underline">Close (X)</div>
+    <center class="px-4">
+        <h2 class="pt-1">Buildd startups by learning lessons from real entrepreneurs</h2>
+        <button
+            class="subscribe_compressed_button group relative justify-center py-1 px-4 border border-transparent md:text-lg leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Get 1 new handcrafted article each day</button>
+    </center>
+    </div>
+    <div class="subscribe_expand hidden">
+    <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-1" do |f| %>
+    <center>
+        <div class="w-full mb-2">
+            <input
+                    name="newsletter_subscriber[name]"
+                    class="bg-white appearance-none border border-gray-500 rounded py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500"
+                    id="inline-full-name"
+                    type="text"
+                    placeholder="Name"
+                    required="required"
+                    oninvalid="this.setCustomValidity('Enter your name here')"
+                    oninput="this.setCustomValidity('')">
+        </div>
+        <div class="w-full mb-2">
+                <input
+                    name="newsletter_subscriber[email]"
+                    class="bg-white appearance-none border border-gray-500 rounded py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500 required"
+                    id="inline-full-name"
+                    type="email"
+                    placeholder="Email"
+                    required="required"
+                    oninvalid="this.setCustomValidity('Enter your email here')"
+                    oninput="this.setCustomValidity('')">
+        </div>
+        <div class="w-full">
+                    <button
+                    type="submit"
+                    class="group relative justify-center py-1 px-3 border border-transparent md:text-lg leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">I want to buildd</button>
+                    <button
+                    class="subscribe_expand_button group relative justify-center py-1 px-3 border border-transparent md:text-lg leading-5 font-normal rounded-md text-white bg-gray-700 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Close</button>
+        </div>
+    </center>
+    <% end %>
+    </div>
+    </div>
+</div>

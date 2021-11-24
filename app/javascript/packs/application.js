@@ -34,4 +34,48 @@ $(document).on('turbolinks:load', function() {
   }
   );
 
+  $(".subscribe_compressed_button").click(function(){
+    $(".subscribe_compressed").hide();
+    $(".subscribe_expand").show();
+  });
+
+  $(".subscribe_expand_button").click(function(){
+    $(".subscribe_compressed").show();
+    $(".subscribe_expand").hide();
+  });
+
+  $(".subscribe_compressed_close").click(function(){
+    $(".subscribe_compressed").hide();
+    $(".subscribe_expand").hide();
+    setCookie('popups','seen', 100);
+  });
+
+  $(document).scroll(function() {
+    var y = $(this).scrollTop();
+      if (y > 100 && getCookie('popups') != 'seen') {
+        $('.subscribe_compressed').fadeIn();
+      } else {
+        $('.subscribe_compressed').fadeOut();
+      }
+    });
+
+  function setCookie(c_name, value, minutes) {
+    var exdate = new Date();
+    exdate.setTime(exdate.getTime() + minutes * 60 * 1000);
+    var c_value = escape(value) + ((minutes == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = c_name + "=" + c_value;
+  }
+
+  function getCookie(c_name) {
+      var i, x, y, ARRcookies = document.cookie.split(";");
+      for (i = 0; i < ARRcookies.length; i++) {
+          x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+          y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+          x = x.replace(/^\s+|\s+$/g, "");
+          if (x == c_name) {
+              return unescape(y);
+          }
+      }
+  }
+
 });

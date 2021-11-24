@@ -77,6 +77,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @curr_url = "category_show"
     @category = Category.find_by(slug:params[:category])
     @resource = Resource.find_by(slug:params[:slug])
     @core_article = CoreArticle.find_by(slug:params[:slug])
