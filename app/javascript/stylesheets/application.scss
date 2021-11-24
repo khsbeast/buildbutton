@@ -58,12 +58,14 @@ hr {
   @apply list-decimal pl-8;
   padding-top:0px !important;
   margin-top:0px !important;
+  @apply pb-2;
 }
 
 .blog-section-body ul, ul {
   @apply list-disc pl-8;
   padding-top:0px !important;
   margin-top:0px !important;
+  @apply pb-2;
 }
 
 .toc {
