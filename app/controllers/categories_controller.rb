@@ -15,7 +15,8 @@ class CategoriesController < ApplicationController
     @startup_topics_icons = ["users","user","search","cube","code"]
 
     @news = CoreArticle.where(content_type: "news").sort_by(&:created_at).reverse
-    @news_other = CoreArticle.where.not(content_type: "news", coming_soon:"true").limit(3).sort_by(&:created_at).reverse
+    @news_other = CoreArticle.where.not(content_type: "news")
+    @news_other = @news_other.where.not(coming_soon:"true").limit(3).sort_by(&:created_at).reverse
     @news = @news + @news_other
 
     filter = StartupStage.first
