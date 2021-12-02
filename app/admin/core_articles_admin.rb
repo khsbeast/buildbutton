@@ -11,6 +11,7 @@ Trestle.resource(:core_articles) do
   form do |core_article|
      text_field :title
      check_box :coming_soon
+     date_field :coming_soon_date
      text_field :content_type, label: "Content Type (news OR article)"
      text_field :meta_description
      text_field :h1

@@ -26,7 +26,11 @@
       <% end %>
   </div>
   <% if resource.coming_soon.present? %>
-  <div class="my-2 py-1 bg-flamingo-800"><center><span class="md:text-lg text-base text-white font-bold">COMING SOON</span></center></div>
+    <% if resource.coming_soon_date.present? %>
+    <div class="my-2 py-1 bg-flamingo-800"><center><span class="md:text-lg text-base text-white font-bold">Releasing on <%= resource.coming_soon_date.strftime("%b #{resource.coming_soon_date.day.ordinalize}") %></span></center></div>
+    <% else %>
+    <div class="my-2 py-1 bg-flamingo-800"><center><span class="md:text-lg text-base text-white font-bold">COMING SOON</span></center></div>
+    <% end %>
   <% end %>
   <div id="card-<%= index %><%= suffix %>-hover" class="hidden company-card block my-2 px-4 pb-4">
       <a href="/<%= resource.category.slug %>/<%= resource.slug %>" class="no-underline text-gray-700 hover:text-gray-700">

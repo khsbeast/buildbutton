@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_144216) do
+ActiveRecord::Schema.define(version: 2021_12_02_020853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_144216) do
     t.string "content_type"
     t.boolean "coming_soon", default: false
     t.bigint "author_id"
+    t.date "coming_soon_date"
     t.index ["author_id"], name: "index_core_articles_on_author_id"
     t.index ["category_id"], name: "index_core_articles_on_category_id"
     t.index ["company_id"], name: "index_core_articles_on_company_id"
