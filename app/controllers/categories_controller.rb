@@ -1,36 +1,7 @@
 class CategoriesController < ApplicationController
 
   def home
-    @startup_stages = StartupStage.pluck(:name, :slug, :fa_icon)
-    @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
-    @startup_functions = StartupFunction.pluck(:name, :slug, :fa_icon)
-    if @startup_functions.length > 5
-      @startup_functions[5 ..] = []
-    end
-    @startup_functions_icons = ["check","filter","users","laptop","street-view"]
-    @startup_topics = StartupTopic.pluck(:name, :slug, :fa_icon)
-    if @startup_topics.length > 5
-      @startup_topics[5 ..] = []
-    end
-    @startup_topics_icons = ["users","user","search","cube","code"]
-
-    @news = CoreArticle.where(content_type: "news").sort_by(&:created_at).reverse
-    @news_other = CoreArticle.where.not(content_type: "news")
-    @news_other = @news_other.where.not(coming_soon:"true").limit(3).sort_by(&:created_at).reverse
-    @news = @news + @news_other
-
-    filter = StartupStage.first
-    articles = filter.core_articles
-    @order = filter.order.split(",")
-    @articles = []
-    @order.each do |order|
-      @articles << articles.find(order)
-      articles = articles.drop(order)
-    end
-    articles = articles.sort_by(&:created_at).reverse
-    articles.each do |article|
-      @articles << article
-    end
+    prepare_honepage
   end
 
   def index
@@ -110,18 +81,8 @@ class CategoriesController < ApplicationController
   end
 
   def subscribe
-    @startup_stages = StartupStage.pluck(:name, :slug, :fa_icon)
-    @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
-    @startup_functions = StartupFunction.pluck(:name, :slug, :fa_icon)
-    if @startup_functions.length > 5
-      @startup_functions[5 ..] = []
-    end
-    @startup_functions_icons = ["check","filter","users","laptop","street-view"]
-    @startup_topics = StartupTopic.pluck(:name, :slug, :fa_icon)
-    if @startup_topics.length > 5
-      @startup_topics[5 ..] = []
-    end
-    @startup_topics_icons = ["users","user","search","cube","code"]
+    prepare_honepage
+    @canonical_url = "https://buildd.co"
   end
 
   def create_newsletter_subscriber
@@ -141,5 +102,38 @@ class CategoriesController < ApplicationController
   private
   def newsletter_subscriber_params
     params.require(:newsletter_subscriber).permit(:name, :email)
+  end
+
+  def prepare_honepage
+    @startup_stages = StartupStage.pluck(:name, :slug, :fa_icon)
+    @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
+    @startup_functions = StartupFunction.pluck(:name, :slug, :fa_icon)
+    if @startup_functions.length > 5
+      @startup_functions[5 ..] = []
+    end
+    @startup_functions_icons = ["check","filter","users","laptop","street-view"]
+    @startup_topics = StartupTopic.pluck(:name, :slug, :fa_icon)
+    if @startup_topics.length > 5
+      @startup_topics[5 ..] = []
+    end
+    @startup_topics_icons = ["users","user","search","cube","code"]
+
+    @news = CoreArticle.where(content_type: "news").sort_by(&:created_at).reverse
+    @news_other = CoreArticle.where.not(content_type: "news")
+    @news_other = @news_other.where.not(coming_soon:"true").limit(3).sort_by(&:created_at).reverse
+    @news = @news + @news_other
+
+    filter = StartupStage.first
+    articles = filter.core_articles
+    @order = filter.order.split(",")
+    @articles = []
+    @order.each do |order|
+      @articles << articles.find(order)
+      articles = articles.drop(order)
+    end
+    articles = articles.sort_by(&:created_at).reverse
+    articles.each do |article|
+      @articles << article
+    end
   end
 end
