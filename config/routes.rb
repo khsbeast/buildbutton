@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'seven-functions-of-marketing', to: redirect('p/seven-functions-of-marketing', status:301)
   get 'mcdonalds-swot-analysis', to: redirect('p/mcdonalds-swot-analysis', status:301)
 
+  get '/subscribe', to:'categories#subscribe'
+
   post '/create_newsletter_subscriber' => "categories#create_newsletter_subscriber", :as => "create_newsletter_subscriber"
 
   get 'all-posts', to:'resources#index'

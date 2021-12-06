@@ -54,6 +54,16 @@ $(document).on('turbolinks:load', function() {
     setCookie('popups','seen', 100);
   });
 
+  $(".subscribe_compressed_button_d").click(function(){
+    $(".subscribe_compressed_d").hide();
+    $(".subscribe_expand_d").show();
+  });
+
+
+  $(".modal-close").click(function(){
+    location.href="/";  
+  });
+
   $(document).scroll(function() {
     var y = $(this).scrollTop();
       if (y > 100 && getCookie('popups') != 'seen' && !$('.subscribe_compressed').hasClass('subscribe_compressed_hidden')) {

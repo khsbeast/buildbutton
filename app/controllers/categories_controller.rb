@@ -109,11 +109,30 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def subscribe
+    @startup_stages = StartupStage.pluck(:name, :slug, :fa_icon)
+    @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
+    @startup_functions = StartupFunction.pluck(:name, :slug, :fa_icon)
+    if @startup_functions.length > 5
+      @startup_functions[5 ..] = []
+    end
+    @startup_functions_icons = ["check","filter","users","laptop","street-view"]
+    @startup_topics = StartupTopic.pluck(:name, :slug, :fa_icon)
+    if @startup_topics.length > 5
+      @startup_topics[5 ..] = []
+    end
+    @startup_topics_icons = ["users","user","search","cube","code"]
+  end
+
   def create_newsletter_subscriber
     @subscriber = NewsletterSubscriber.new(newsletter_subscriber_params)
 
     if @subscriber.save
-      redirect_to request.referer, flash: { success: "You're now subscribed 😎" }
+      if request.referer.include? "subscribe"
+        redirect_to "/", flash: { success: "You're now subscribed 😎" }
+      else
+        redirect_to request.referer, flash: { success: "You're now subscribed 😎" }
+      end
     else
       redirect_to request.referer, flash: { error: "#{@subscriber.errors.full_messages.join(', ')}" }
     end

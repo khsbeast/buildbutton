@@ -11,13 +11,13 @@
     </div>
   </div>
   <div class="hidden md:block md:w-2/3">
-    <div class="subscribe_compressed hidden px-2 float-right">
+    <div class="subscribe_compressed_d px-2 float-right">
       <div class="px-4">
         <button
-            class="subscribe_compressed_button group relative justify-center py-1 px-4 border border-transparent md:text-base leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Get one new handcrafted article each day!</button>
+            class="subscribe_compressed_button_d group relative justify-center py-1 px-4 border border-transparent md:text-base leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Get one new handcrafted article each day!</button>
       </div>
     </div>
-    <div class="subscribe_expand hidden">
+    <div class="subscribe_expand_d hidden">
       <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-1" do |f| %>
           <div class="flex space-x-2">
             <div class="w-1/3">
