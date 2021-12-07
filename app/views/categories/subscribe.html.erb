@@ -697,7 +697,7 @@ body {
         <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-2" do |f| %>
         <center>
         <div class="md:flex mb-4">
-            <div class="md:w-1/2 md:pr-2 w-full">
+            <div class="md:w-1/2 md:pr-2 w-full mt-2 md:mt-0">
             <input
                 name="newsletter_subscriber[name]"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500"
@@ -708,7 +708,7 @@ body {
                 oninvalid="this.setCustomValidity('Enter your name here')"
                 oninput="this.setCustomValidity('')">
             </div>
-            <div class="md:w-1/2 md:pl-2 w-full">
+            <div class="md:w-1/2 md:pl-2 w-full mt-2 md:mt-0">
             <input
                 name="newsletter_subscriber[email]"
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500 required"

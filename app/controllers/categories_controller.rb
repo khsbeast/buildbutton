@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   def home
     prepare_honepage
+    @cta_card = true
   end
 
   def index
