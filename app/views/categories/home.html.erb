@@ -700,7 +700,7 @@ body {
   <div class="bg-gray-200 rounded-3xl py-1 md:mb-24 mb-12">
     <div class="w-full flex-none -ml-full rounded-3xl transform shadow-lg bg-gradient-to-br from-red-400 to-pink-500 -rotate-1">
     <section class="md:mx-24 mx-4 threads-section mt-0 md:mt-4 mb-4 text-gray-700 body-font md:pt-12 pt-4 pb-4 transform rotate-1">
-      <div><%= render 'shared/articles_3_in_row', articles:@articles, suffix:"b" %></div>
+      <div><%= render 'shared/articles_3_in_row', articles:@articles[0..5], suffix:"b" %></div>
     </section>
     </div>
   </div>
