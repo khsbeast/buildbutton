@@ -64,6 +64,10 @@ $(document).on('turbolinks:load', function() {
     location.href="/";  
   });
 
+  $(".modal-close-show").click(function(){
+    $(".modal").hide();
+  });
+
   $(document).scroll(function() {
     var y = $(this).scrollTop();
       if (y > 100 && getCookie('popups') != 'seen' && !$('.subscribe_compressed').hasClass('subscribe_compressed_hidden')) {

@@ -79,6 +79,10 @@ class CategoriesController < ApplicationController
       @company = @core_article.company
       @author = @core_article.author
     end
+    
+    if params[:subscribe]
+      @subscribe_popup = true
+    end
   end
 
   def subscribe
@@ -90,8 +94,12 @@ class CategoriesController < ApplicationController
     @subscriber = NewsletterSubscriber.new(newsletter_subscriber_params)
 
     if @subscriber.save
-      if request.referer.include? "subscribe"
-        redirect_to "/", flash: { success: "You're now subscribed 😎" }
+      if request.referer.include?("subscribe")
+        if request.referer.include?("?")
+          redirect_to request.referer.split("?").first, flash: { success: "You're now subscribed 😎" }
+        else
+          redirect_to "/", flash: { success: "You're now subscribed 😎" }
+        end
       else
         redirect_to request.referer, flash: { success: "You're now subscribed 😎" }
       end
