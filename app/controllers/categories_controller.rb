@@ -56,6 +56,7 @@ class CategoriesController < ApplicationController
     @category = Category.find_by(slug:params[:category])
     @resource = Resource.find_by(slug:params[:slug])
     @core_article = CoreArticle.find_by(slug:params[:slug])
+    @canonical_url = "https://buildd.co#{request.path}"
     @post = @resource ? @resource : @core_article
     if @post.category != @category
       redirect_to '/404'
