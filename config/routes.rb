@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   post '/create_newsletter_subscriber' => "categories#create_newsletter_subscriber", :as => "create_newsletter_subscriber"
 
   get 'all-posts', to:'resources#index'
+  get '/all-articles', to: 'categories#core_articles_index'
 
   get 'startup-stages/:slug', to: 'categories#learning_path'
   get 'startup-functions/:slug', to: 'categories#learning_path'

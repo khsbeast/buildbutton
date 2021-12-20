@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def home
-    prepare_honepage
+    prepare_homepage
     @cta_card = true
   end
 
@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
     @category = Category.find_by(slug:params[:category])
     @glossary_articles = Resource.where(category:@category)
     @core_articles = CoreArticle.where(category:@category)
+  end
+
+  def core_articles_index
+    @core_articles = CoreArticle.where.not(coming_soon:true).order(:created_at).reverse_order
   end
 
   def learning_path
@@ -87,7 +91,7 @@ class CategoriesController < ApplicationController
   end
 
   def subscribe
-    prepare_honepage
+    prepare_homepage
     @canonical_url = "https://buildd.co"
   end
 
@@ -114,7 +118,7 @@ class CategoriesController < ApplicationController
     params.require(:newsletter_subscriber).permit(:name, :email)
   end
 
-  def prepare_honepage
+  def prepare_homepage
     @startup_stages = StartupStage.pluck(:name, :slug, :fa_icon)
     @startup_stages_icons = ["puzzle-piece","user", "users", "rocket", "space-shuttle"]
     @startup_functions = StartupFunction.pluck(:name, :slug, :fa_icon)
@@ -128,10 +132,7 @@ class CategoriesController < ApplicationController
     end
     @startup_topics_icons = ["users","user","search","cube","code"]
 
-    @news = CoreArticle.where(content_type: "news").sort_by(&:created_at).reverse
-    @news_other = CoreArticle.where.not(content_type: "news")
-    @news_other = @news_other.where.not(coming_soon:"true").limit(3).sort_by(&:created_at).reverse
-    @news = @news + @news_other
+    @news = CoreArticle.where.not(coming_soon:"true").sort_by(&:created_at).reverse
 
     filter = StartupStage.first
     articles = filter.core_articles
