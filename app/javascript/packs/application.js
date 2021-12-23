@@ -68,12 +68,11 @@ $(document).on('turbolinks:load', function() {
     $(".modal").hide();
   });
 
-  $('body').click(function (event) 
-{
+  $('body').click(function (event) {
    if(!$(event.target).closest('#modal-content').length && !$(event.target).is('#modal-content')) {
      $(".modal").hide();
    }     
-});
+  });
 
   $(document).scroll(function() {
     var y = $(this).scrollTop();
