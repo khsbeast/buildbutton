@@ -1,6 +1,24 @@
 Trestle.resource(:newsletter_subscribers) do
   menu do
-    item :newsletter_subscribers, icon: "fa fa-star"
+    item :newsletter_subscribers, icon: 'fa fa-star'
+  end
+
+  # Reference: https://github.com/TrestleAdmin/trestle/wiki/How-To:-Add-Custom-Action#example-2-adding-a-collection-action
+  controller do
+    def index
+      toolbar(:primary) do |t|
+        t.link('Export to CSV', admin.path(:export), target: '__blank')
+      end
+    end
+
+    def export
+      send_data NewsletterSubscriber.to_csv,
+                filename: "NewsletterSubscribers-#{DateTime.now.strftime('%d/%m/%Y-%H:%M')}.csv"
+    end
+  end
+
+  routes do
+    get :export, on: :collection
   end
 
   # Customize the table columns shown on the index view.
