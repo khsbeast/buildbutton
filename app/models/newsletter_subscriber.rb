@@ -19,7 +19,7 @@ class NewsletterSubscriber < ApplicationRecord
 
   private
     def make_api_call
-      chimp_mail_api_key = "0cf5ef71b8e61d200f126c1b73c47bba-us20"
+      chimp_mail_api_key = "a2b7e5bad3d8b177d4815693a909d99c-us20"
 
       first_name = name.split[0]
       last_name = name.split[1]
@@ -41,7 +41,7 @@ class NewsletterSubscriber < ApplicationRecord
         }
       }
 
-      response = HTTParty.post('https://us20.api.mailchimp.com/3.0/lists/f95aa8bcc2/members', body: options.to_json, headers: {"Authorization" => "Bearer #{chimp_mail_api_key}"})
+      response = HTTParty.post('https://us20.api.mailchimp.com/3.0/lists/2b6fb7cdcd/members', body: options.to_json, headers: {"Authorization" => "Bearer #{chimp_mail_api_key}"})
       puts response.body
       
     end
