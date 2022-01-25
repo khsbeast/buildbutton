@@ -17,11 +17,11 @@ ActiveStorage.start()
 $(document).on('turbolinks:load', function() {
   setTimeout(function(){
     $('.flash-error').fadeOut();
-  }, 2000);
+  }, 10000);
 
   setTimeout(function(){
     $('.flash-success').fadeOut();
-  }, 2000);
+  }, 10000);
 
   $(".rcalc").hover(function(){
     let user_info_hover = $(this).attr('id').split('-')[1];
