@@ -5,7 +5,7 @@ class NewsletterSubscriber < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
-  before_save :make_api_call
+  before_save :add_to_mailchimp_list
 
   def self.to_csv
     posts = all
@@ -18,8 +18,9 @@ class NewsletterSubscriber < ApplicationRecord
   end
 
   private
-    def make_api_call
-      chimp_mail_api_key = "a2b7e5bad3d8b177d4815693a909d99c-us20"
+    def add_to_mailchimp_list
+      mailchimp_api_key = ENV["mailchimp_api_key"]
+      mailchimp_list_id = ENV["mailchimp_list_id"]
 
       first_name = name.split[0]
       last_name = name.split[1]
@@ -41,8 +42,13 @@ class NewsletterSubscriber < ApplicationRecord
         }
       }
 
-      response = HTTParty.post('https://us20.api.mailchimp.com/3.0/lists/2b6fb7cdcd/members', body: options.to_json, headers: {"Authorization" => "Bearer #{chimp_mail_api_key}"})
-      puts response.body
+      response = HTTParty.post("https://us20.api.mailchimp.com/3.0/lists/#{mailchimp_list_id}/members", body: options.to_json, headers: {"Authorization" => "Bearer #{mailchimp_api_key}"})
+
+      if response.code != 200
+        puts 'mailchimp error'
+        puts response.body
+        throw :abort
+      end
       
     end
 end
