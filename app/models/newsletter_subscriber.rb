@@ -47,6 +47,14 @@ class NewsletterSubscriber < ApplicationRecord
       if response.code != 200
         puts 'mailchimp error'
         puts response.body
+        body = JSON.parse(response.body)
+        
+        if body["title"] == "Member Exists"
+          errors.add(:base, "You are already subscribed")
+        else
+          errors.add(:base, "Unexpected error occured. Please try again later")
+        end
+
         throw :abort
       end
       
