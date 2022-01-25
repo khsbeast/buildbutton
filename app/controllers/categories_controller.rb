@@ -101,12 +101,12 @@ class CategoriesController < ApplicationController
     if @subscriber.save
       if request.referer.include?("subscribe")
         if request.referer.include?("?")
-          redirect_to request.referer.split("?").first, flash: { success: "You're now subscribed 😎" }
+          redirect_to request.referer.split("?").first, flash: { success: "Newsletter successfully subscribed" }
         else
-          redirect_to "/", flash: { success: "You're now subscribed 😎" }
+          redirect_to "/", flash: { success: "Newsletter successfully subscribed" }
         end
       else
-        redirect_to request.referer, flash: { success: "You're now subscribed 😎" }
+        redirect_to request.referer, flash: { success: "Newsletter successfully subscribed" }
       end
     else
       redirect_to request.referer, flash: { error: "#{@subscriber.errors.full_messages.join(', ')}" }

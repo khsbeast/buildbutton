@@ -136,12 +136,11 @@ div.errorExplanation {
 	background-image: linear-gradient(top, #fceec1, #eedc94);
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	border-color: #eedc94 #eedc94 #e4c652;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-color: rgba(0, 0, 0, 0.2);
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 4px;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 div.flash-error a,
 div.flash-notice a,
@@ -165,26 +164,39 @@ div.flash-error div,
 div.flash-notice div,
 div.flash-success div,
 div.errorExplanation div {
-	margin-top: 5px;
+	margin-top: 2px;
 	margin-bottom: 2px;
 	line-height: 28px;
 }
+div.flash-error img,
+div.flash-success img {
+	height: 40px;
+	margin-right: 15px;
+}
 div.flash-error,
 div.errorExplanation {
-	background-color: #fdcfcc;
-	background-repeat: repeat-x;
-	background-image: linear-gradient(top, #ee5f5b, #c43c35);
+	background-color: #ffffff;
 	text-shadow: none;
-	border-color: #c43c35 #c43c35 #882a25;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	font-weight: 400;
+	display:flex;
+	align-items: center;
+}
+div.flash-error-heading {
+	color: #c43c35;
+	text-transform: capitalize;
+	font-weight: 750;
 }
 div.flash-success {
-	background-color: #dff0d8;
-	background-repeat: repeat-x;
-	background-image: linear-gradient(top, #62c462, #57a957);
+	background-color: #ffffff;
 	text-shadow: none;
-	border-color: #57a957 #57a957 #3d773d;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	font-weight: 400;
+	display:flex;
+	align-items: center;
+}
+div.flash-success-heading {
+	color: #57a957;
+	text-transform: capitalize;
+	font-weight: 750;
 }
 div.flash-notice {
 	background-color: #339bb9;
