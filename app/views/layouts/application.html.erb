@@ -64,7 +64,7 @@
       <% if flash[f].present? %>
         <div class="flash-<%= f %> mx-auto md:mt-4 mt-2 md:mx-32 mx-4">
           <%= image_tag("#{f}-icon.svg", :alt => "#{f}-icon") %>
-          <div class="flash-text-container mt-[2px] mb-[2px]">
+          <div class="flash-text-container mt-0.5 mb-0.5">
             <div class="flash-<%= f %>-heading"> <%= f %> </div>
             <%= flash[f] %>
           </div>
