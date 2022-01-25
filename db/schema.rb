@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_072937) do
+ActiveRecord::Schema.define(version: 2022_01_21_094040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,10 @@ ActiveRecord::Schema.define(version: 2022_01_07_072937) do
     t.boolean "coming_soon", default: false
     t.bigint "author_id"
     t.date "coming_soon_date"
+    t.text "table_of_contents"
+    t.text "in_a_nutshell"
+    t.integer "in_a_nutshell_points_count"
+    t.integer "read_minutes"
     t.index ["author_id"], name: "index_core_articles_on_author_id"
     t.index ["category_id"], name: "index_core_articles_on_category_id"
     t.index ["company_id"], name: "index_core_articles_on_company_id"

@@ -88,6 +88,8 @@ class CategoriesController < ApplicationController
     if params[:subscribe]
       @subscribe_popup = true
     end
+
+    render "show_article"
   end
 
   def subscribe

@@ -16,7 +16,11 @@ Trestle.resource(:core_articles) do
      text_field :meta_description
      text_field :h1
      text_field :h2
+     text_area :table_of_contents
+     text_area :in_a_nutshell
+     number_field :in_a_nutshell_points_count
      text_area :content
+     number_field :read_minutes
      text_field :index_title
      date_field :index_date
      text_area :top_articles
