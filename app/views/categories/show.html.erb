@@ -50,31 +50,15 @@
     <% end %>
   
   <% if @core_article.present? %>
-  <% if @author.present? %>
+  <% if @author.present? && !@author.website.present? %>
   <div class="px-3 py-3 mx-2 mb-4 border border-white rounded-lg bg-white">
     <center>
-    <p><img class="w-16 h-16 rounded-full border" src="<%= @core_article.author.pic %>"/></p>
-    <p class="font-bold"><%= @author.name %></p>
     <p class="pt-0 text-base"><%= @author.bio %></p>
-    <div class="text-center mb-2">
-        <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="md:text-xl text-lg mx-2"><%= fa_icon "link" %></a><% end %>
-        <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="md:text-xl text-lg mx-2"><%= fa_icon "twitter" %></a><% end %>
-        <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="md:text-xl text-lg mx-2"><%= fa_icon "linkedin" %></a><% end %>
-    </div>
     </center>
   </div>
   <% end %>
   <div class="sticky top-16">
     <div class="px-3 py-3 mx-2 border border-white rounded-lg bg-white">
-      <center>
-      <h3 class="font-normal text-gray-700">Contributed by</h3>
-      <a href="/<%= @company.slug %>/community" class="no-underline text-gray-700 font-bold" target="_blank">
-      <p><img class="w-16 h-16 rounded-full border" src="<%= @company.company_logo %>"/></p>
-      <p><%= @company.company_name %><% if @company.company_twitter.present? %><a href="<%= @company.company_twitter %>" target="_blank" class="sm:text-xl text-lg mx-2"><%= fa_icon "twitter" %></a><% end %></p>
-      </a>
-      </center>
-    </div>
-    <div class="px-3 py-3 mt-4 mx-2 border border-white rounded-lg bg-white">
       <div class="text-center py-2 px-1">
           Get one new handcrafted piece of content each day
       </div>
