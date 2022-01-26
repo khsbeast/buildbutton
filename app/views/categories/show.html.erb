@@ -53,7 +53,7 @@
   <% if @author.present? && !@author.website.present? %>
   <div class="px-3 py-3 mx-2 mb-4 border border-white rounded-lg bg-white">
     <center>
-    <p class="pt-0 text-base"><%= @author.bio %></p>
+    <p class="pt-0 text-base"><%= @author.bio.html_safe %></p>
     </center>
   </div>
   <% end %>
