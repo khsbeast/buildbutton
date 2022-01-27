@@ -99,7 +99,23 @@ Run yarn to install dependecies
 yarn
 ```
 
-Start rails development server
+### Start rails development server
+
+There are 2 options:
+
+In a single terminal tab run following command:
+
+```
+./bin/dev
+```
+
+Or
+
+Run following commands in two separate terminal tabs:
+
+```
+yarn build:css --watch
+```
 
 ```
 rails server

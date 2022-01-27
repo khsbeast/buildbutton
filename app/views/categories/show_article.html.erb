@@ -6,22 +6,30 @@
 <% meta_tag("og_twitter_description", @post.meta_description) %>
 <% meta_tag("og_image", @post.social_media_preview_image) %>
 <% meta_tag("og_twitter_image", @post.social_media_preview_image) %>
+<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-flamingo-700 to-flamingo-400 z-100"></div>
 <main>
   <!-- Hero banner -->
-  <section class="hero-banner w-screen h-screen text-white text-center">
+  <section class="hero-banner w-full h-screen text-white text-center">
     <style>
       .background{
-          background-image: linear-gradient(0deg, #292929 -4.46%, rgba(0, 0, 0, 0) 69.38%), url(<%= @post.cover_image %>);
+          background: #541d89 url(<%= @post.cover_image %>) center;
+          background-attachment: fixed;
+      }
+      .gradient{
+          background-image: linear-gradient(0deg, #292929 -4.46%, rgba(0, 0, 0, 0) 69.38%);
       }
     </style>
-    <div class="background w-full h-full bg-cover bg-center"></div>
+    <div class="background w-full h-full bg-cover bg-center">
+      <div class="gradient absolute top-0 left-0 w-full h-full"></div>
+      <%= image_tag(@post.cover_image, class:'hidden') %>
+    </div>
     <div class="foreground absolute md:mt-0 top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-      <div class="container p-8 mb-8">
-        <h1 class="text-4xl leading-snug md:text-5xl lg:text-7xl md:leading-snug lg:leading-tight font-bold"><%= @post.h1 %></h1>
+      <div class="sm:container p-4 xsm:p-8 md:p-16 flex flex-col h-full">
+        <h1 class="text-2xl xsm:text-3xl leading-snug md:text-5xl lg:text-7xl md:leading-snug lg:leading-tight font-bold"><%= @post.h1 %></h1>
         <% if @post.h2.present? %>
-          <h2 class="text-white text-xl md:text-3xl leading-normal md:leading-normal font-normal mt-8"><%= @post.h2 %></h2>
+          <h2 class="text-white text-lg xsm:text-xl md:text-3xl leading-normal md:leading-normal font-normal md:mt-8"><%= @post.h2 %></h2>
         <% end %>
-        <div class="flex flex-col md:flex-row justify-center items-center mt-8">
+        <div class="flex flex-col md:flex-row justify-center items-center md:mt-8">
           <div class="flex items-center">
             <%= image_tag(@author.pic, alt: @author.name, class: "rounded-full w-8 h-8 mr-2") %>
             <p class="font-light"><%= @author.name %></p>
@@ -38,29 +46,36 @@
             <%= @post.read_minutes.present? ? @post.read_minutes : "5" %> min read
           </div>
         </div>
-        <div class="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2">
-          <%= inline_svg_tag("arrow-down.svg", class: "") %>
+        <div id="scroll-down" class="flex justify-center h-full items-end animate-bounce">
+          <%= inline_svg_tag("arrow-down.svg") %>
         </div>
       </div>
     </div>
   </section>
   <!-- Blog section -->
-  <section class="article container flex flex-col md:flex-row">
+  <section class="article sm:container flex flex-col md:flex-row">
     <!-- Summary -->
     <% if @post.table_of_contents.present? %>
       <!-- overview dropdown for mobile view -->
-      <div class="md:hidden px-4 py-4 container sticky top-0 bg-white z-50">
-        <div class="article-summary relative" data-controller="overview-dropdown">
-          <div data-action="click->overview-dropdown#toggle click@window->overview-dropdown#hide" role="button" data-overview-dropdown-target="button" tabindex="0" class="select-none h-full p-4 flex justify-between items-center border border-b-4">
+      <div class="header-mobile md:hidden px-4 py-4 sm:container fixed w-screen top-0 bg-white z-50 opacity-0">
+        <div class="article-summary relative" data-controller="overview-dropdown overview" data-overview-single-progress-bar-value="true">
+          <div 
+            data-action="click->overview-dropdown#toggle click@window->overview-dropdown#hide" 
+            role="button" 
+            data-overview-dropdown-target="button" 
+            tabindex="0" 
+            class="select-none h-full p-4 flex justify-between items-center border border-b-4 relative"
+            >
             <h3 class="font-normal text-lg p-0 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">
               <span class="font-bold">You're Reading: </span>
-              <span class="overflow-hidden text-ellipsis whitespace-nowrap" data-overview-dropdown-target="currentIndex"></span>
+              <span class="overflow-hidden text-ellipsis whitespace-nowrap" data-overview-target="mobileIndex"></span>
             </h3>
-            <%= fa_icon "caret-down" %>
+            <%= fa_icon "caret-down", data:{ overview_dropdown_target: "dropdownArrow"}, class:"transition-all" %>
+            <span data-overview-target="mobileProgressBar" class="inline-block absolute -bottom-1 left-0 h-1 bg-flamingo-700"></span>
           </div>
           <div data-overview-dropdown-target="menu" class="absolute w-full bg-white right-0 hidden z-50 shadow-md">
-            <ul data-action="click->overview-dropdown#toggle" class="list-none" data-controller="toc">
-              <!-- <li data-action="click->toc#goto" data-toc-topic-param="need">Was there a need for a firm like NoBroker?</li> -->
+            <ul data-action="click->overview-dropdown#toggle" class="list-none">
+              <!-- <li data-action="click->overview#goto" data-overview-topic-param="need">Was there a need for a firm like NoBroker?</li> -->
               <%= @post.table_of_contents.html_safe %>
             </ul>
           </div>
@@ -69,16 +84,16 @@
       <!-- overview for desktop view -->
       <div class="hidden md:block w-1/4 mt-8 pr-8 article-summary sticky top-summary h-full">
         <h3 class="font-normal text-3xl p-0 mb-10">Overview</h3>
-        <ul data-controller="toc">
-          <!-- <li data-action="click->toc#goto" data-toc-topic-param="need">Was there a need for a firm like NoBroker?</li> -->
+        <ul data-controller="overview" data-overview-target="index-list">
+          <!-- <li data-action="click->overview#goto" data-overview-topic-param="need">Was there a need for a firm like NoBroker?</li> -->
           <%= @post.table_of_contents.html_safe %>
         </ul>
       </div>
     <% end %>
-    <div class="container w-full md:w-3/4 px-4 md:pl-8">
+    <div class="sm:container w-full md:w-3/4 px-4 md:pl-8">
       <!-- tldr -->
       <% if @post.in_a_nutshell.present? && @post.in_a_nutshell_points_count.present? %>
-        <div class="topic article-nutshell md:mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>">
+        <div class="topic article-nutshell mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>">
           <div class="flex justify-between mb-4">
             <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-2xl">
               <%= image_tag("nutshell.png", class: "mr-2") %>
@@ -121,7 +136,7 @@
       <% end %>
     </div>
   </section>
-  <section class="container mt-16">
+  <section class="sm:container mt-16">
     <div class="flex flex-col flex-wrap md:flex-row justify-between px-4">
       <div class="article-tags-container flex flex-wrap">
         <% if !@post.startup_stages.blank? %>

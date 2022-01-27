@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
@@ -30,7 +32,8 @@ module.exports = {
           '700': '#8c27d9',
           '800': '#802bb1',
           '900': '#541d89',
-        }
+        },
+        inherit: 'inherit'
       },
       container: {
         center: true,
@@ -44,7 +47,8 @@ module.exports = {
         },
       },
       spacing: {
-        'summary': '108px'
+        summary: '108px',
+        inherit: 'inherit'
       },
       animation: {
         none: 'none',
@@ -64,8 +68,18 @@ module.exports = {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
-      }
+      },
+      content: {
+        'empty': '""',
+      },
+      zIndex: {
+        '100': '100',
+      },
     },
+    screens: {
+      'xsm': '350px',
+      ...defaultTheme.screens,
+    }
   },
 }
 

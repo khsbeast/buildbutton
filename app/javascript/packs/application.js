@@ -9,12 +9,23 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "controllers/index"
 require("jquery")
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 $(document).on('turbolinks:load', function () {
+    window.onscroll = () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.querySelector("#scroll-progress").style.width = `${scrolled}%`;
+    }
+
     setTimeout(function () {
         $('.flash-error').fadeOut();
     }, 2000);

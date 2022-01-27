@@ -13,5 +13,5 @@ application.register("subscribe-modal", SubscribeModalController)
 import TldrSliderController from "./tldr_slider_controller.js"
 application.register("tldr-slider", TldrSliderController)
 
-import TocController from "./toc_controller.js"
-application.register("toc", TocController)
+import OverviewController from "./overview_controller.js"
+application.register("overview", OverviewController)
