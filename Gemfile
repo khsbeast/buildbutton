@@ -18,6 +18,12 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 
+# For api requests
+gem "httparty"
+
+# For environment variables
+gem "figaro"
+
 gem 'sitemap_generator'
 
 gem 'cssbundling-rails'
