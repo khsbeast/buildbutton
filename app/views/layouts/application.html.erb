@@ -58,7 +58,6 @@
             <div class="flash-<%= f %>-heading"> <%= f %> </div>
             <%= flash[f] %>
           </div>
-
         </div>
       <% end %>
     <% end %>
@@ -69,44 +68,6 @@
         <%= render 'layouts/mobile_fixed_footer' %>
       </div>
     <% end %>
-    <!-- Newsletter subscription floating button -->
-    <div data-controller="subscribe-modal">
-      <a href="#" data-action="click->subscribe-modal#open" class="fixed bottom-4 right-4 bg-primary rounded-full p-4 cursor-pointer z-50">
-        <%= image_tag("email.svg", class:"w-8 h-8") %>
-      </a>
-      <!-- Modal Container -->
-      <div data-subscribe-modal-target="container" data-action="click->subscribe-modal#closeBackground keyup@window->subscribe-modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
-        <!-- Modal Inner Container -->
-        <div class="max-h-screen w-full max-w-lg relative">
-          <!-- Modal Card -->
-          <div class="mx-6 md:m-1 bg-white rounded shadow">
-            <div class="p-8 md:p-12">
-              <h2 class="inline text-3xl md:text-4xl leading-9 md:leading-4">
-                Subscribe to buildd, 
-                <span class="text-xl md:text-2xl font-normal">start working on your startup</span>
-              </h2>
-              <p class="mt-4">Get one handcrafted article each day! know about startups, growth and our bootstrapped startup journey to $3M revenue.</p>
-              <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-2" do |f| %>
-                <%= f.label :name, "Full name", class: "block mt-4 mb-2" %>
-                <%= f.text_field "newsletter_subscriber[name]", 
-                class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500", 
-                placeholder: "What should we call you?",
-                required: true,
-                oninvalid: "this.setCustomValidity('Enter your name here')", 
-                oninput:"this.setCustomValidity('')" %>
-                <%= f.label :email, "E-mail address", class: "block mt-4 mb-2" %>
-                <%= f.email_field "newsletter_subscriber[email]", 
-                class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500", 
-                placeholder: "visitor@gmail.com",
-                required: true,
-                oninvalid:"this.setCustomValidity('Enter your email here')", 
-                oninput:"this.setCustomValidity('')" %>
-                <%= f.submit "I want to buildd", class: "group relative w-full flex justify-center py-2 px-4 border border-transparent md:text-xl text-lg leading-5 font-normal rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out mt-4" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "shared/newsletter_floating_button"  %>
   </body>
 </html>

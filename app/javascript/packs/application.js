@@ -19,11 +19,14 @@ Turbolinks.start()
 ActiveStorage.start()
 
 $(document).on('turbolinks:load', function () {
-    window.onscroll = () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.querySelector("#scroll-progress").style.width = `${scrolled}%`;
+    const scrollProgressBar = document.querySelector("#scroll-progress");
+    if (scrollProgressBar) {
+        window.onscroll = () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgressBar.style.width = `${scrolled}%`;
+        }
     }
 
     setTimeout(function () {
