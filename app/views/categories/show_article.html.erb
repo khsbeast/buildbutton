@@ -32,11 +32,13 @@
           <h2 class="text-white text-lg xsm:text-xl md:text-3xl leading-normal md:leading-normal font-normal md:mt-8"><%= @post.h2 %></h2>
         <% end %>
         <div class="flex flex-col md:flex-row justify-center items-center md:mt-8">
-          <div class="flex items-center">
-            <%= image_tag(@author.pic, alt: @author.name, class: "rounded-full w-8 h-8 mr-2") %>
-            <p class="font-light"><%= @author.name %></p>
-          </div>
-          <div class="w-2 h-2 my-2 bg-white rounded-full mx-8"></div>
+          <% unless @author.nil? %>
+            <div class="flex items-center">
+              <%= image_tag(@author.pic, alt: @author.name, class: "rounded-full w-8 h-8 mr-2") if @author.pic.present? %>
+              <p class="font-light"><%= @author.name %></p>
+            </div>
+            <div class="w-2 h-2 my-2 bg-white rounded-full mx-8"></div>
+          <% end %>
           <div>
             <%= 
                 date = @post.index_date || @post.created_at
@@ -138,30 +140,32 @@
       <% end %>
     </div>
   </section>
-  <section class="sm:container mt-16">
-    <div class="flex flex-col flex-wrap md:flex-row justify-between px-4">
-      <div class="article-tags-container flex flex-wrap">
-        <% if !@post.startup_stages.blank? %>
-          <% for item in @post.startup_stages do %>
-            <a href="#"><%= item.name %></a>
+  <% if @core_article.present? %>
+    <section class="sm:container mt-16">
+      <div class="flex flex-col flex-wrap md:flex-row justify-between px-4">
+        <div class="article-tags-container flex flex-wrap">
+          <% if !@post.startup_stages.blank? %>
+            <% for item in @post.startup_stages do %>
+              <a href="#"><%= item.name %></a>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if !@post.startup_functions.blank? %>
-          <% for item in @post.startup_functions do %>
-            <a href="#"><%= item.name %></a>
+          <% if !@post.startup_functions.blank? %>
+            <% for item in @post.startup_functions do %>
+              <a href="#"><%= item.name %></a>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if !@post.startup_topics.blank? %>
-          <% for item in @post.startup_topics do %>
-            <a href="#"><%= item.name %></a>
+          <% if !@post.startup_topics.blank? %>
+            <% for item in @post.startup_topics do %>
+              <a href="#"><%= item.name %></a>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <div class="social-icons-container flex justify-center my-4 md:my-0">
+          <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="no-underline"><%= fa_icon "link" %></a><% end %>
+          <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="no-underline"><%= fa_icon "twitter" %></a><% end %>
+          <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="no-underline"><%= fa_icon "linkedin" %></a><% end %>
+        </div>
       </div>
-      <div class="social-icons-container flex justify-center my-4 md:my-0">
-        <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="no-underline"><%= fa_icon "link" %></a><% end %>
-        <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="no-underline"><%= fa_icon "twitter" %></a><% end %>
-        <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="no-underline"><%= fa_icon "linkedin" %></a><% end %>
-      </div>
-    </div>
-  </section>
+    </section>
+  <% end %>
 </main>

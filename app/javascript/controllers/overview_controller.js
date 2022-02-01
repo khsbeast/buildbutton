@@ -30,7 +30,7 @@ export default class extends Controller {
             trigger: '.hero-banner',
             scrub: true,
             start: 'bottom 40%',
-            end: () => `bottom ${header.offsetHeight}`,
+            end: 'bottom 0',
             onEnter: () => {
                 scrollDown.classList.remove('animate-bounce');
             },

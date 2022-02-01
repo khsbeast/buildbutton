@@ -79,17 +79,18 @@ class CategoriesController < ApplicationController
       @top_articles = @post.top_articles.split("<=>")
       @top_articles_urls = @post.top_articles_urls.split("<=>")
     end
-
-    if @core_article.present?
-      @company = @core_article.company
-      @author = @core_article.author
-    end
     
     if params[:subscribe]
-      @subscribe_popup = true
+        @subscribe_popup = true
     end
 
-    render "show_article"
+    if @core_article.present?
+        @banner_transition = true
+        @company = @core_article.company
+        @author = @core_article.author
+        render "show_article"
+    end
+
   end
 
   def subscribe

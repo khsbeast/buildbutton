@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: [
@@ -33,7 +34,8 @@ module.exports = {
           '800': '#802bb1',
           '900': '#541d89',
         },
-        inherit: 'inherit'
+        inherit: 'inherit',
+        purple: colors.violet,
       },
       container: {
         center: true,
