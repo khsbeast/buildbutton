@@ -1,6 +1,6 @@
 let environment = {
     plugins: [
-        require('postcss-import'),
+        require('tailwindcss/nesting'),
         require('tailwindcss'),
         require('autoprefixer'),
         require('postcss-flexbugs-fixes'),
@@ -10,7 +10,7 @@ let environment = {
             },
             stage: 3
         })
-    ]
+    ],
 }
 
 if (process.env.RAILS_ENV === "production") {
