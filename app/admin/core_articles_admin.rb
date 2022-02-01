@@ -8,15 +8,24 @@ Trestle.resource(:core_articles) do
     column :title
   end
 
+  active_storage_fields do
+    [:banner_image]
+  end
+
   form do |core_article|
      text_field :title
      check_box :coming_soon
      date_field :coming_soon_date
      text_field :content_type, label: "Content Type (news OR article)"
      text_field :meta_description
+     active_storage_field :banner_image
      text_field :h1
      text_field :h2
+     text_area :table_of_contents
+     text_area :in_a_nutshell
+     number_field :in_a_nutshell_points_count
      text_area :content
+     number_field :read_minutes
      text_field :index_title
      date_field :index_date
      text_area :top_articles

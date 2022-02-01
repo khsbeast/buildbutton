@@ -8,4 +8,6 @@ class CoreArticle < ApplicationRecord
   has_many :startup_functions, through: :startup_function_articles
   has_many :startup_topic_articles, :dependent => :destroy
   has_many :startup_topics, through: :startup_topic_articles
+
+  has_one_attached :banner_image
 end

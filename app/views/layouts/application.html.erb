@@ -6,23 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="description" content="<%= @meta_description.present? ? @meta_description : 'Your startup is unique. Design your own learning journey. We have you covered.' %>"/>
-
     <% if @meta_tags %>
       <% @meta_tags.each do |k,v| %>
         <meta name="<%= k %>" content="<%= v %>"/>
       <% end %>
     <% end %>
-
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <% if @canonical_url.present? %>
       <link rel="canonical" href="<%= @canonical_url %>"/>
     <% end %>
-
     <meta property="og:title" content="<% if yield(:meta_og_title).present? %><%= yield(:meta_og_title) %><% else %>buildd startups by learning lessons from real entrepreneurs<% end %>">
     <meta property="og:description" content="<% if yield(:meta_og_description).present? %><%= yield(:meta_og_description) %><% else %>Your startup is unique. Design your own learning journey. We have you covered.<% end %>">
     <meta property="og:image" content="<% if yield(:meta_og_image).present? %><%= yield(:meta_og_image) %><% else %>https://buildd.s3.amazonaws.com/twitter_preview.png<% end %>">
@@ -32,7 +26,6 @@
     <meta name="twitter:title" content="<% if yield(:meta_og_twitter_title).present? %><%= yield(:meta_og_twitter_title) %><% else %>buildd<% end %>">
     <meta name="twitter:description" content="<% if yield(:meta_og_twitter_description).present? %><%= yield(:meta_og_twitter_description) %><% else %>buildd startups by learning lessons from real entrepreneurs<% end %>">
     <meta name="twitter:image" content="<% if yield(:meta_og_twitter_image).present? %><%= yield(:meta_og_twitter_image) %><% else %>https://buildd.s3.amazonaws.com/twitter_preview.png<% end %>">
-
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="192x192"  href="/icon.jpg">
     <link rel="icon" type="image/png" sizes="32x32" href="/icon.jpg">
@@ -49,17 +42,15 @@
 
       gtag('config', 'G-92DE5Y7J2F');
     </script>
-
     <script async="async" defer="defer" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag "application" %>
   </head>
-
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/new_header' %>
     <% [ :error, :success, :notice ].each do |f| %>
       <% if flash[f].present? %>
         <div class="flash-<%= f %> mx-auto md:mt-4 mt-2 md:mx-32 mx-4">
@@ -68,16 +59,16 @@
             <div class="flash-<%= f %>-heading"> <%= f %> </div>
             <%= flash[f] %>
           </div>
-
         </div>
       <% end %>
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
     <% if @curr_url.present? && @curr_url == "category_show" %>
-    <div class="md:hidden">
-      <%= render 'layouts/mobile_fixed_footer' %>
-    </div>
+      <div class="md:hidden">
+        <%= render 'layouts/mobile_fixed_footer' %>
+      </div>
     <% end %>
+    <%= render "shared/newsletter_floating_button"  %>
   </body>
 </html>
