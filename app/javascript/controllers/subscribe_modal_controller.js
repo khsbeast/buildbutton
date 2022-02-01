@@ -6,9 +6,9 @@ export default class SubscribeModal extends Modal {
     connect() {
         super.connect();
 
-        if (this.data.get('showOnLoad') && this.data.get('showOnLoad') === 'true') {
+        if (this.data.get('showOnLoad') && this.data.get('showOnLoad') === 'true' && !window.location.hash) {
             // Lock the scroll and save current scroll position
-            this.lockScroll();
+            document.body.classList.add('inset-x-0', 'overflow-hidden');
 
             // Unhide the modal
             this.containerTarget.classList.remove(this.toggleClass);
