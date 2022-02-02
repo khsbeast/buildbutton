@@ -315,4 +315,10 @@ div.errorExplanation h2 {
  * 
  * © 2022 MyFonts Inc
  */
+
+  @font-face {
+    font-family: "AvenirLTStd-Book";
+    src: url("avenir-book.woff2") format("woff2"),
+      url("avenir-book.woff") format("woff");
+  }
 }
