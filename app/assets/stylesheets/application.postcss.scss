@@ -272,28 +272,20 @@ div.errorExplanation h2 {
 }
 
 .article-content ol {
-  @apply my-4 list-decimal;
-
-  @media only screen and (max-width: 768px) {
-    @apply list-inside;
-  }
+  @apply my-4 ml-8 list-decimal;
 
   ul {
-    @apply pl-4;
+    @apply pl-4 ml-0;
   }
 }
 .article-content ol li {
   @apply text-2xl leading-normal mt-3;
 }
 .article-content ul {
-  @apply my-4 list-disc;
-
-  @media only screen and (max-width: 768px) {
-    @apply list-inside;
-  }
+  @apply my-4 ml-8 list-disc;
 
   ol {
-    @apply pl-4;
+    @apply pl-4 ml-0;
   }
 }
 .article-content ul li {
