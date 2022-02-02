@@ -77,6 +77,17 @@ module.exports = {
       zIndex: {
         '100': '100',
       },
+      fontSize: {
+        'article-p': '1.3125rem',
+        'article-h2': '2.25rem',
+        'article-h3': '1.85rem',
+        'article-h4': '1.65rem',
+        'article-h5': '1.5rem',
+      },
+      letterSpacing: {
+        'article-p': '-0.063px',
+        'article-heading': '-1.98px',
+      },
     },
     screens: {
       'xsm': '350px',

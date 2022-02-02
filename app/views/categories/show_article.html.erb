@@ -9,29 +9,32 @@
 <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-flamingo-700 to-flamingo-400 z-100"></div>
 <main>
   <!-- Hero banner -->
-  <section class="hero-banner w-full h-screen text-white text-center">
+  <section class="hero-banner relative w-full min-h-screen text-white text-center">
     <style>
       .background{
           background: #541d89 <%= @post.banner_image.attached? ? "url(#{url_for(@post.banner_image)}) center" : "" %>;
           background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
       }
       .gradient{
-          background-image: linear-gradient(0deg, #292929 -4.46%, rgba(0, 0, 0, 0) 69.38%);
+          /* background-image: linear-gradient(0deg, #292929 -4.46%, rgba(0, 0, 0, 0) 69.38%); */
+          background-color: rgba(42, 42, 42, 0.6)
       }
     </style>
-    <div class="background w-full h-full bg-cover bg-center">
+    <div class="background absolute w-full h-full bg-cover bg-center -z-10">
       <div class="gradient absolute top-0 left-0 w-full h-full"></div>
       <% if @post.banner_image.attached? %>
         <%= image_tag(@post.banner_image, class:'hidden') %>
       <% end %>
     </div>
-    <div class="foreground absolute md:mt-0 top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+    <div class="foreground md:mt-0 top-0 left-0 w-full h-full flex flex-col justify-center items-center">
       <div class="sm:container p-4 xsm:p-8 md:p-16 flex flex-col h-full">
-        <h1 class="text-2xl xsm:text-3xl leading-snug md:text-5xl lg:text-7xl md:leading-snug lg:leading-tight font-bold"><%= @post.h1 %></h1>
+        <h1 class="text-4xl leading-snug md:text-5xl lg:text-7xl md:leading-snug lg:leading-tight font-bold mt-8 lg:mt-10 xl:mt-32"><%= @post.h1 %></h1>
         <% if @post.h2.present? %>
-          <h2 class="text-white text-lg xsm:text-xl md:text-3xl leading-normal md:leading-normal font-normal md:mt-8"><%= @post.h2 %></h2>
+          <h2 class="text-white text-lg xsm:text-xl md:text-3xl leading-normal md:leading-normal font-normal mt-8"><%= @post.h2 %></h2>
         <% end %>
-        <div class="flex flex-col md:flex-row justify-center items-center md:mt-8">
+        <div class="flex flex-col md:flex-row justify-center items-center mt-8">
           <% unless @author.nil? %>
             <div class="flex items-center">
               <%= image_tag(@author.pic, alt: @author.name, class: "rounded-full w-8 h-8 mr-2") if @author.pic.present? %>
@@ -50,7 +53,7 @@
             <%= @post.read_minutes.present? ? @post.read_minutes : "5" %> min read
           </div>
         </div>
-        <div id="scroll-down" class="flex justify-center h-full items-end animate-bounce">
+        <div id="scroll-down" class="flex justify-center h-full items-end animate-bounce mt-8">
           <%= inline_svg_tag("arrow-down.svg") %>
         </div>
       </div>
@@ -97,9 +100,9 @@
     <div class="sm:container w-full md:w-3/4 px-4 md:pl-8">
       <!-- tldr -->
       <% if @post.in_a_nutshell.present? && @post.in_a_nutshell_points_count.present? %>
-        <div class="topic article-nutshell mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>">
+        <div class="topic mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>">
           <div class="flex justify-between mb-4">
-            <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-2xl">
+            <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-article-h3">
               <%= image_tag("nutshell.png", class: "mr-2") %>
               In a nutshell
             </h3>
@@ -118,11 +121,11 @@
                 <% end %>
               </div>
               <div class="flex w-full justify-between md:justify-end">
-                <a class="navigation-btn text-2xl cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none mr-8" data-tldr-slider-target="back" data-action="click->tldr-slider#back">
+                <a class="navigation-btn text-article-p cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none mr-8" data-tldr-slider-target="back" data-action="click->tldr-slider#back">
                   <%= inline_svg_tag("arrow-down.svg", class: "rotate-90 primay-color-svg w-5 h-5 mr-2") %>
                   Prev 
                 </a>
-                <a class="navigation-btn text-2xl cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none" data-tldr-slider-target="next" data-action="click->tldr-slider#next">
+                <a class="navigation-btn text-article-p cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none" data-tldr-slider-target="next" data-action="click->tldr-slider#next">
                   Next 
                   <%= inline_svg_tag("arrow-down.svg", class: "-rotate-90 primay-color-svg w-5 h-5 ml-2") %>
                 </a>

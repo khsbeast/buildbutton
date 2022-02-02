@@ -1,6 +1,6 @@
 <div data-controller="subscribe-modal" data-subscribe-modal-backdrop-color-value="rgba(0, 0, 0, 0.6)" data-subscribe-modal-show-on-load="<%= @subscribe_popup %>">
   <a href="#" data-action="click->subscribe-modal#open" class="fixed bottom-4 right-4 bg-primary rounded-full p-4 cursor-pointer z-50">
-    <%= image_tag("email.svg", class:"w-8 h-8") %>
+    <%= image_tag("email.svg", class:"w-8 h-8 translate-x-0.5") %>
   </a>
   <!-- Modal Container -->
   <div data-subscribe-modal-target="container" data-action="click->subscribe-modal#closeBackground keyup@window->subscribe-modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
