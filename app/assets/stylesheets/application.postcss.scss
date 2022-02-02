@@ -234,7 +234,7 @@ div.errorExplanation h2 {
 
 /* .article { */
 .article-summary ul {
-  @apply list-none p-4 md:p-0 text-base leading-normal md:text-xl text-gray-500;
+  @apply list-none p-4 md:p-0 text-base md:text-lg text-gray-500;
 }
 .article-summary ul li {
   @apply last:mb-0 mb-2 md:last:mb-6 md:mb-6 last:border-0 md:last:border-b-2 border-b-2 border-gray-200 last:pb-0 md:last:pb-1 pb-2 md:pb-1 cursor-pointer min-w-full relative;
@@ -244,7 +244,7 @@ div.errorExplanation h2 {
 }
 
 .slider-track p {
-  @apply text-2xl leading-normal w-full shrink-0;
+  @apply text-article-p tracking-article-p leading-normal w-full shrink-0;
   flex-basis: 100%;
 }
 
@@ -257,43 +257,53 @@ div.errorExplanation h2 {
 .primay-color-svg path {
   fill: rgba(128, 42, 175, 1);
 }
-.article-content h2 {
-  @apply text-4xl md:text-5xl font-normal mt-10 leading-tight md:leading-tight;
-}
-.article-content h3 {
-  @apply text-3xl md:text-4xl font-normal mt-10 leading-tight md:leading-tight;
-}
-.article-content h4 {
-  @apply text-2xl md:text-3xl font-normal mt-10 leading-tight md:leading-tight;
-}
-
-.article-content p {
-  @apply text-2xl leading-normal;
-}
-
-.article-content ol {
-  @apply my-4 ml-8 list-decimal;
-
-  ul {
-    @apply pl-4 ml-0;
+.article-content {
+  line-height: 2.125rem !important;
+  p {
+    @apply text-article-p tracking-article-p leading-normal;
   }
-}
-.article-content ol li {
-  @apply text-2xl leading-normal mt-3;
-}
-.article-content ul {
-  @apply my-4 ml-8 list-disc;
+
+  h2 {
+    @apply text-4xl md:text-article-h2 font-normal mt-10 leading-tight md:leading-tight;
+  }
+
+  h3 {
+    @apply text-3xl md:text-article-h3 font-normal mt-10 leading-tight md:leading-tight;
+  }
+
+  h4 {
+    @apply text-2xl md:text-article-h4 font-normal mt-10 leading-tight md:leading-tight;
+  }
+
+  h5 {
+    @apply text-2xl md:text-article-h5 font-normal mt-10 leading-tight md:leading-tight;
+  }
 
   ol {
-    @apply pl-4 ml-0;
-  }
-}
-.article-content ul li {
-  @apply text-2xl leading-normal mt-3;
-}
+    @apply my-4 ml-6 list-decimal;
+    li {
+      @apply text-article-p tracking-article-p leading-normal mt-3;
+    }
 
-.article-content img {
-  @apply my-8 w-full;
+    ul {
+      @apply pl-4 ml-0;
+    }
+  }
+
+  ul {
+    @apply my-4 ml-6 list-disc;
+    li {
+      @apply text-article-p tracking-article-p leading-normal mt-3;
+    }
+
+    ol {
+      @apply pl-4 ml-0;
+    }
+  }
+
+  img {
+    @apply my-8 w-full;
+  }
 }
 
 .article-tags-container a {
