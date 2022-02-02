@@ -57,11 +57,11 @@
     </div>
   </section>
   <!-- Blog section -->
-  <section class="article sm:container flex flex-col md:flex-row">
+  <section class="article sm:container flex flex-col md:flex-row justify-center items-center">
     <!-- Summary -->
     <% if @post.table_of_contents.present? %>
       <!-- overview dropdown for mobile view -->
-      <div class="header-mobile md:hidden px-4 py-4 sm:container fixed w-screen top-0 bg-white z-50 opacity-0">
+      <div class="header-mobile md:hidden px-4 py-4 fixed w-screen top-0 bg-white z-50 opacity-0">
         <div class="article-summary relative" data-controller="overview-dropdown overview" data-overview-single-progress-bar-value="true">
           <div 
             data-action="click->overview-dropdown#toggle click@window->overview-dropdown#hide" 

@@ -272,13 +272,29 @@ div.errorExplanation h2 {
 }
 
 .article-content ol {
-  @apply mt-2;
+  @apply my-4 list-decimal;
+
+  @media only screen and (max-width: 768px) {
+    @apply list-inside;
+  }
+
+  ul {
+    @apply pl-4;
+  }
 }
 .article-content ol li {
   @apply text-2xl leading-normal mt-3;
 }
 .article-content ul {
-  @apply mt-2;
+  @apply my-4 list-disc;
+
+  @media only screen and (max-width: 768px) {
+    @apply list-inside;
+  }
+
+  ol {
+    @apply pl-4;
+  }
 }
 .article-content ul li {
   @apply text-2xl leading-normal mt-3;
