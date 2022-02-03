@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import NutshellController from "./nutshell_controller.js"
+application.register("nutshell", NutshellController)
+
+import OverviewController from "./overview_controller.js"
+application.register("overview", OverviewController)
+
 import OverviewDropdownController from "./overview_dropdown_controller.js"
 application.register("overview-dropdown", OverviewDropdownController)
 
@@ -12,6 +18,3 @@ application.register("subscribe-modal", SubscribeModalController)
 
 import TldrSliderController from "./tldr_slider_controller.js"
 application.register("tldr-slider", TldrSliderController)
-
-import OverviewController from "./overview_controller.js"
-application.register("overview", OverviewController)

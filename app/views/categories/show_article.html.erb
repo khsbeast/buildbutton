@@ -9,39 +9,34 @@
 <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-flamingo-700 to-flamingo-400 z-100"></div>
 <main>
   <!-- Hero banner -->
-  <section class="hero-banner relative w-full min-h-screen text-white text-center">
+  <section class="hero-banner w-full h-screen text-white text-center scro">
     <style>
       .background{
           background: #541d89 <%= @post.banner_image.attached? ? "url(#{url_for(@post.banner_image)}) center" : "" %>;
           background-attachment: fixed;
-          background-repeat: no-repeat;
-          background-size: cover;
       }
       .gradient{
-          /* background-image: linear-gradient(0deg, #292929 -4.46%, rgba(0, 0, 0, 0) 69.38%); */
-          background-color: rgba(42, 42, 42, 0.6)
+          background-image: linear-gradient(0deg, #292929 -4.46%, rgba(0, 0, 0, 0) 69.38%);
       }
     </style>
-    <div class="background absolute w-full h-full bg-cover bg-center -z-10">
+    <div class="background w-full h-full bg-cover bg-center">
       <div class="gradient absolute top-0 left-0 w-full h-full"></div>
       <% if @post.banner_image.attached? %>
         <%= image_tag(@post.banner_image, class:'hidden') %>
       <% end %>
     </div>
-    <div class="foreground md:mt-0 top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+    <div class="foreground absolute md:mt-0 top-0 left-0 w-full h-full flex flex-col justify-center items-center">
       <div class="sm:container p-4 xsm:p-8 md:p-16 flex flex-col h-full">
-        <h1 class="text-4xl leading-snug md:text-5xl lg:text-7xl md:leading-snug lg:leading-tight font-bold mt-8 lg:mt-10 xl:mt-32"><%= @post.h1 %></h1>
+        <h1 class="text-2xl xsm:text-3xl leading-snug md:text-5xl lg:text-7xl md:leading-snug lg:leading-tight font-bold"><%= @post.h1 %></h1>
         <% if @post.h2.present? %>
-          <h2 class="text-white text-lg xsm:text-xl md:text-3xl leading-normal md:leading-normal font-normal mt-8"><%= @post.h2 %></h2>
+          <h2 class="text-white text-lg xsm:text-xl md:text-3xl leading-normal md:leading-normal font-normal md:mt-8"><%= @post.h2 %></h2>
         <% end %>
-        <div class="flex flex-col md:flex-row justify-center items-center mt-8">
-          <% unless @author.nil? %>
-            <div class="flex items-center">
-              <%= image_tag(@author.pic, alt: @author.name, class: "rounded-full w-8 h-8 mr-2") if @author.pic.present? %>
-              <p class="font-light"><%= @author.name %></p>
-            </div>
-            <div class="w-2 h-2 my-2 bg-white rounded-full mx-8"></div>
-          <% end %>
+        <div class="flex flex-col md:flex-row justify-center items-center md:mt-8">
+          <div class="flex items-center">
+            <%= image_tag(@author.pic, alt: @author.name, class: "rounded-full w-8 h-8 mr-2") %>
+            <p class="font-light"><%= @author.name %></p>
+          </div>
+          <div class="w-2 h-2 my-2 bg-white rounded-full mx-8"></div>
           <div>
             <%= 
                 date = @post.index_date || @post.created_at
@@ -53,18 +48,18 @@
             <%= @post.read_minutes.present? ? @post.read_minutes : "5" %> min read
           </div>
         </div>
-        <div id="scroll-down" class="flex justify-center h-full items-end animate-bounce mt-8">
+        <div id="scroll-down" class="flex justify-center h-full items-end animate-bounce">
           <%= inline_svg_tag("arrow-down.svg") %>
         </div>
       </div>
     </div>
   </section>
   <!-- Blog section -->
-  <section class="article sm:container flex flex-col md:flex-row justify-center items-center md:items-start">
+  <section class="article sm:container flex flex-col md:flex-row" data-controller="nutshell">
     <!-- Summary -->
     <% if @post.table_of_contents.present? %>
       <!-- overview dropdown for mobile view -->
-      <div class="header-mobile md:hidden px-4 py-4 fixed w-screen top-0 bg-white z-50 opacity-0">
+      <div class="header-mobile md:hidden px-4 py-4 sm:container fixed w-screen top-0 bg-white z-50 opacity-0">
         <div class="article-summary relative" data-controller="overview-dropdown overview" data-overview-single-progress-bar-value="true">
           <div 
             data-action="click->overview-dropdown#toggle click@window->overview-dropdown#hide" 
@@ -91,6 +86,20 @@
       <!-- overview for desktop view -->
       <div class="hidden md:block w-1/4 mt-8 pr-8 article-summary sticky top-summary h-full">
         <h3 class="font-normal text-3xl p-0 mb-10">Overview</h3>
+        <!-- This is the Nutshell section-->
+          <div class="box mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8 hidden box2" data-flip-id="box"> 
+            <div class="text text-2xl text2 hidden" data-flip-id="text">
+              <div> Short of Time? </div>
+              <div> We've got you </div>
+              <div> Covered </div>
+            </div>
+            <h3 class="flex items-center mt-4 py-3 border border-primary whitespace-nowrap text-2xl rounded-lg justify-center">
+              <span data-flip-id="img" class="flex button">
+              <%= image_tag("nutshell.png", class: "mr-2") %>
+              In a nutshell
+              </span>
+            </h3>
+          </div>
         <ul data-controller="overview" data-overview-target="index-list">
           <!-- <li data-action="click->overview#goto" data-overview-topic-param="need">Was there a need for a firm like NoBroker?</li> -->
           <%= @post.table_of_contents.html_safe %>
@@ -99,18 +108,21 @@
     <% end %>
     <div class="sm:container w-full md:w-3/4 px-4 md:pl-8">
       <!-- tldr -->
+      <button data-action="click->nutshell#anim"> Animate </button>
       <% if @post.in_a_nutshell.present? && @post.in_a_nutshell_points_count.present? %>
-        <div class="topic mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>">
+        <div class="topic article-nutshell mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8 box1" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>" data-flip-id="box">
           <div class="flex justify-between mb-4">
-            <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-article-h3">
+            <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-2xl heading" data-flip-id="img">
+              <span data-flip-id="img" class="flex">
               <%= image_tag("nutshell.png", class: "mr-2") %>
               In a nutshell
+              </span>
             </h3>
             <p class="hidden md:block text-primary font-semibold text-2xl" data-tldr-slider-target="indicator">1/4</p>
           </div>
           <div class="slider">
             <div class="overflow-hidden">
-              <div class="slider-track flex top-0 left-0 right-0 bottom-0 transition-transform" data-tldr-slider-target="track">
+              <div class="slider-track flex top-0 left-0 right-0 bottom-0 transition-transform text1" data-tldr-slider-target="track" data-flip-id="text">
                 <%= @post.in_a_nutshell.html_safe %>
               </div>
             </div>
@@ -121,11 +133,11 @@
                 <% end %>
               </div>
               <div class="flex w-full justify-between md:justify-end">
-                <a class="navigation-btn text-article-p cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none mr-8" data-tldr-slider-target="back" data-action="click->tldr-slider#back">
+                <a class="navigation-btn text-2xl cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none mr-8" data-tldr-slider-target="back" data-action="click->tldr-slider#back">
                   <%= inline_svg_tag("arrow-down.svg", class: "rotate-90 primay-color-svg w-5 h-5 mr-2") %>
                   Prev 
                 </a>
-                <a class="navigation-btn text-article-p cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none" data-tldr-slider-target="next" data-action="click->tldr-slider#next">
+                <a class="navigation-btn text-2xl cursor-pointer text-primary hover:text-primary visited:text-primary active:text-primary flex items-center no-underline select-none" data-tldr-slider-target="next" data-action="click->tldr-slider#next">
                   Next 
                   <%= inline_svg_tag("arrow-down.svg", class: "-rotate-90 primay-color-svg w-5 h-5 ml-2") %>
                 </a>
@@ -133,6 +145,7 @@
             </div>
           </div>
         </div>
+
       <% end %>
       <hr class="w-1/3 mt-8 border border-textBlack"/>
       <!-- blog content -->
@@ -143,32 +156,30 @@
       <% end %>
     </div>
   </section>
-  <% if @core_article.present? %>
-    <section class="sm:container mt-16">
-      <div class="flex flex-col flex-wrap md:flex-row justify-between px-4">
-        <div class="article-tags-container flex flex-wrap">
-          <% if !@post.startup_stages.blank? %>
-            <% for item in @post.startup_stages do %>
-              <a href="#"><%= item.name %></a>
-            <% end %>
+  <section class="sm:container mt-16">
+    <div class="flex flex-col flex-wrap md:flex-row justify-between px-4">
+      <div class="article-tags-container flex flex-wrap">
+        <% if !@post.startup_stages.blank? %>
+          <% for item in @post.startup_stages do %>
+            <a href="#"><%= item.name %></a>
           <% end %>
-          <% if !@post.startup_functions.blank? %>
-            <% for item in @post.startup_functions do %>
-              <a href="#"><%= item.name %></a>
-            <% end %>
+        <% end %>
+        <% if !@post.startup_functions.blank? %>
+          <% for item in @post.startup_functions do %>
+            <a href="#"><%= item.name %></a>
           <% end %>
-          <% if !@post.startup_topics.blank? %>
-            <% for item in @post.startup_topics do %>
-              <a href="#"><%= item.name %></a>
-            <% end %>
+        <% end %>
+        <% if !@post.startup_topics.blank? %>
+          <% for item in @post.startup_topics do %>
+            <a href="#"><%= item.name %></a>
           <% end %>
-        </div>
-        <div class="social-icons-container flex justify-center my-4 md:my-0">
-          <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="no-underline"><%= fa_icon "link" %></a><% end %>
-          <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="no-underline"><%= fa_icon "twitter" %></a><% end %>
-          <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="no-underline"><%= fa_icon "linkedin" %></a><% end %>
-        </div>
+        <% end %>
       </div>
-    </section>
-  <% end %>
+      <div class="social-icons-container flex justify-center my-4 md:my-0">
+        <% if @author.website.present? %><a href="<%= @author.website %>" target="_blank" class="no-underline"><%= fa_icon "link" %></a><% end %>
+        <% if @author.twitter.present? %><a href="<%= @author.twitter %>" target="_blank" class="no-underline"><%= fa_icon "twitter" %></a><% end %>
+        <% if @author.linkedin.present? %><a href="<%= @author.linkedin %>" target="_blank" class="no-underline"><%= fa_icon "linkedin" %></a><% end %>
+      </div>
+    </div>
+  </section>
 </main>
