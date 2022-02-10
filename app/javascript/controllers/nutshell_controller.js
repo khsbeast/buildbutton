@@ -1,59 +1,34 @@
 import { Controller } from "@hotwired/stimulus"
 import { gsap } from "gsap";
-import {Flip } from 'gsap/Flip'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 // Connects to data-controller="nutshell"
 export default class extends Controller {
-  static targets = ["button","heading"]
+  static targets = ["nuthshellOverviewBox","blogSection","articleNutshell","nutshellMainBox"]
   connect() {
-    console.log(butt)
-    console.log("oncsse")
+    if(window.screen.availWidth > 1280){
+      ScrollTrigger.create({
+          trigger: this.articleNutshellTarget,
+          scrub: true,
+          end: 'bottom 0%',
+          start: 'bottom 0%',
+          onEnter: () => {    
+          this.nuthshellOverviewBoxTarget.classList.remove('hidden')  
+          const fade = gsap.fromTo(this.nuthshellOverviewBoxTarget,{opacity:0,scale:0},{duration:1.5, opacity:1, scale:1,ease:"power3"})
+          const moveup = gsap.to(this.blogSectionTarget,{duration:1.5,y:"0%",ease:"power3"})
+          },
+          onLeaveBack: () => {
+            const fade = gsap.fromTo(this.nuthshellOverviewBoxTarget,{opacity:1,scale:1},{duration:1.5, opacity:0, scale:0,ease:"power3"})
+            const moveup = gsap.to(this.blogSectionTarget,{duration:1.5,y:"-80%",ease:"power3"})  
+          }
+      })
+    }
   }
-  anim()
-  {
-    gsap.registerPlugin(Flip);
-
-    const state2 = Flip.getState(".text1")
-    const state = Flip.getState(".heading")
-    const state3 = Flip.getState(".box1")
-
-      const butt = document.querySelector('.button')
-      const head = document.querySelector('.heading')
-  
-      const head1 = document.querySelector('.text1')
-      const head2 = document.querySelector('.text2')
-  
-      const box1 = document.querySelector('.box1')
-      const box2 = document.querySelector('.box2')
-      
-      head.classList.add('hidden')
-      butt.classList.remove('hidden')
-  
-      head1.classList.add('hidden')
-      head2.classList.remove('hidden')
-  
-      box1.classList.add('hidden')
-      box2.classList.remove('hidden')
-
-      const nut = Flip.from(state,{
-        targets:butt,
-        duration:0.5,
-        ease:"power1",
-      })
-      const text = Flip.from(state2,{
-        targets:head2,
-        duration:0.5,
-        ease:"power1",
-      })
-
-      const box = Flip.from(state3,{
-        targets:box2,
-        duration:0,
-        ease:"power1",
-        fade:true,
-        absolute:true
-      })
+  scrollToNutshell(){
+    this.nutshellMainBoxTarget.scrollIntoView({
+        behavior: 'smooth'
+      });
   }
+
   }

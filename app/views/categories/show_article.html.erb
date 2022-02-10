@@ -9,7 +9,7 @@
 <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-flamingo-700 to-flamingo-400 z-100"></div>
 <main>
   <!-- Hero banner -->
-  <section class="hero-banner w-full h-screen text-white text-center scro">
+  <section class="hero-banner w-full h-screen text-white text-center">
     <style>
       .background{
           background: #541d89 <%= @post.banner_image.attached? ? "url(#{url_for(@post.banner_image)}) center" : "" %>;
@@ -55,7 +55,7 @@
     </div>
   </section>
   <!-- Blog section -->
-  <section class="article sm:container flex flex-col md:flex-row" data-controller="nutshell">
+  <section class="article sm:container flex flex-col md:flex-row" data-controller="nutshell" data-nutshell-target="nutshellMainBox">
     <!-- Summary -->
     <% if @post.table_of_contents.present? %>
       <!-- overview dropdown for mobile view -->
@@ -85,35 +85,36 @@
       </div>
       <!-- overview for desktop view -->
       <div class="hidden md:block w-1/4 mt-8 pr-8 article-summary sticky top-summary h-full">
-        <h3 class="font-normal text-3xl p-0 mb-10">Overview</h3>
-        <!-- This is the Nutshell section-->
-          <div class="box mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8 hidden box2" data-flip-id="box"> 
-            <div class="text text-2xl text2 hidden" data-flip-id="text">
+              <!-- This is the Nutshell section-->
+          <div class="topic box mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8 hidden" data-nutshell-target="nuthshellOverviewBox"> 
+            <div class="text text-2xl">
               <div> Short of Time? </div>
               <div> We've got you </div>
               <div> Covered </div>
             </div>
-            <h3 class="flex items-center mt-4 py-3 border border-primary whitespace-nowrap text-2xl rounded-lg justify-center">
-              <span data-flip-id="img" class="flex button">
+            <h3 class="flex items-center mt-4 py-3 border border-primary whitespace-nowrap text-2xl rounded-lg justify-center" data-action="click->nutshell#scrollToNutshell">
+              <button class="flex nut">
               <%= image_tag("nutshell.png", class: "mr-2") %>
               In a nutshell
-              </span>
+              </button>
             </h3>
           </div>
-        <ul data-controller="overview" data-overview-target="index-list">
+        <div data-nutshell-target="blogSection">
+        <h3 class="font-normal text-3xl p-0 mb-10 mt-10">Overview</h3>
+        <ul data-controller="overview" data-overview-target="index-list" >
           <!-- <li data-action="click->overview#goto" data-overview-topic-param="need">Was there a need for a firm like NoBroker?</li> -->
           <%= @post.table_of_contents.html_safe %>
         </ul>
       </div>
+      </div>
     <% end %>
     <div class="sm:container w-full md:w-3/4 px-4 md:pl-8">
       <!-- tldr -->
-      <button data-action="click->nutshell#anim"> Animate </button>
       <% if @post.in_a_nutshell.present? && @post.in_a_nutshell_points_count.present? %>
-        <div class="topic article-nutshell mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8 box1" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>" data-flip-id="box">
+        <div class="topic mt-8 border border-borderGrey border-b-2 border-b-primary p-6 md:p-8" data-controller="tldr-slider" data-tldr-slider-count-value="<%= @post.in_a_nutshell_points_count %>" data-nutshell-target="articleNutshell">
           <div class="flex justify-between mb-4">
-            <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-2xl heading" data-flip-id="img">
-              <span data-flip-id="img" class="flex">
+            <h3 class="flex items-center pr-20 md:py-0 border-b border-primary whitespace-nowrap text-2xl">
+              <span class="flex">
               <%= image_tag("nutshell.png", class: "mr-2") %>
               In a nutshell
               </span>
@@ -122,7 +123,7 @@
           </div>
           <div class="slider">
             <div class="overflow-hidden">
-              <div class="slider-track flex top-0 left-0 right-0 bottom-0 transition-transform text1" data-tldr-slider-target="track" data-flip-id="text">
+              <div class="slider-track flex top-0 left-0 right-0 bottom-0 transition-transform" data-tldr-slider-target="track">
                 <%= @post.in_a_nutshell.html_safe %>
               </div>
             </div>
