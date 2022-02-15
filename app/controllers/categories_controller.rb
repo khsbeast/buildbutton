@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+  def test
+  end
   def home
     prepare_homepage
     @cta_card = true

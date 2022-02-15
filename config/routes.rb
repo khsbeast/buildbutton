@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get '/subscribe', to:'categories#subscribe'
 
   post '/create_newsletter_subscriber' => "categories#create_newsletter_subscriber", :as => "create_newsletter_subscriber"
-
+  get 'test', to:'categories#test'
   get 'all-posts', to:'resources#index'
   get '/all-articles', to: 'categories#core_articles_index'
 

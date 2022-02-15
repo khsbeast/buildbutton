@@ -21,6 +21,9 @@ module.exports = {
         error: '#C13939',
         warning: '#D6CF2F',
         info: '#3980C1',
+        mediumBlue: '#8A5CF6',
+        steelGrey: '#3F4249',
+        darkGrey: '#61656D',
         borderGrey: '#DADDDF',
         flamingo: {
           '50': '#f6f5fa',
@@ -60,6 +63,8 @@ module.exports = {
         bounce: 'bounce 1s infinite',
         marquee: 'marquee 50s linear infinite',
         marquee2: 'marquee2 50s linear infinite',
+        "slide-in": 'slide-in 350ms ease',
+        "slide-up": 'slide-up 350ms ease-out',
       },
       keyframes: {
         marquee: {
@@ -70,6 +75,26 @@ module.exports = {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
+        "slide-in": {
+          '0%': {
+            transform: 'translateX(2rem)',
+            opacity: 0,
+          },
+          '100%': {
+            transform: 'translateX(0)',
+            opacity: 1,
+          },
+        },
+        "slide-up": {
+          '0%': {
+            transform: 'translateY(2rem)',
+            opacity: 0,
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: 1,
+          },
+        }
       },
       content: {
         'empty': '""',
