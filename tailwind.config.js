@@ -22,7 +22,9 @@ module.exports = {
         warning: '#D6CF2F',
         info: '#3980C1',
         mediumBlue: '#8A5CF6',
+        instaPink: '#FF5B5B',
         steelGrey: '#3F4249',
+        lighterGrey: '#B2B6BB',
         darkGrey: '#61656D',
         borderGrey: '#DADDDF',
         flamingo: {
