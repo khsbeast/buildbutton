@@ -22,20 +22,14 @@ body{
             <div class="cont h-full flex justify-end items-end justify-between">
                 <div class="left h-full flex items-center">
                     <div class="">
-                        <div class="text-fos-h1 font-black">Founder Stories</div>
+                        <div class="text-fos-h1 font-black">Founer Stories</div>
                         <div class="text-fos-h3 font-light text-steelGrey">Read stories about Startup Moguls who revolutionised the industry
                             simply by taking the leap!</div>
                     </div>
                 </div>
-                <div class="right flex overflow-auto">
-                <%= image_tag("grp.svg") %>
-                </div>
             </div>
         </div>
         <div class="slider mt-4">
-            <div class="text-mediumBlue text-fos-h2 font-black">Immersive Stories</div>
-            <div class="text-steelGrey font-normal text-fos-h4 mt-2">Get lost in these short engrossing stories of founders who set out to achieve
-                something iconic.</div>
             <div class="img flex overflow-hidden cursor-grab">
                 <% @founders.each do |founder| %>
                  <div class="m-12">
