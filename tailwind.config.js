@@ -106,9 +106,9 @@ module.exports = {
       },
       fontSize: {
         'article-p': '1.3125rem',
-        'fos-h1': '5rem',
+        'fos-h1': '4rem',
         'fos-h2': '2.375rem',
-        'fos-h3': '1.75rem',
+        'fos-h3': '1.5rem',
         'fos-h4': '1.25rem',
         'fos-h5': '0.875rem',
         'article-h2': '2.25rem',

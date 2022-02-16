@@ -1,102 +1,130 @@
-<% meta_tag("og_title", @post.title) %>
-<% meta_tag("og_description", @post.meta_description) %>
-<% meta_tag("og_url", request.url) %>
-<% meta_tag("og_site_name", "buildd") %>
-<% meta_tag("og_twitter_title", @post.title) %>
-<% meta_tag("og_twitter_description", @post.meta_description) %>
-<% meta_tag("og_image", @post.social_media_preview_image) %>
-<% meta_tag("og_twitter_image", @post.social_media_preview_image) %>
-<div class="mt-8 md:mx-32 mx-4">
-  <section class="blog-section md:flex flex-none md:space-x-8 mt-0 md:mt-4 mb-4 text-gray-700 body-font md:text-lg">
-    <div class="md:w-3/4 md:mx-auto bg-white border border-white rounded-lg md:pb-4 pb-2">
-      <div class="mb-4 bg-gray-300 py-1 border border-gray-300 rounded-lg">
-        <div class="border border-flamingo-800 rounded-lg bg-gradient-to-br from-purple-500 to-flamingo-800 md:px-16 px-4 transform -rotate-1">
-          <h1 class="md:text-3xl text-xl text-center title-font font-bold text-white m-auto <% if @post.h2.present? %>pt-8 pb-2<% else %>py-12<% end %> leading-none tracking-tight px-4 transform rotate-1"><%= @post.h1 %></h1>
-          <% if @post.h2.present? %>
-            <h2 class="md:text-xl text-base text-gray-100 font-light text-center title-font m-auto pt-2 pb-8 leading-snug tracking-tight md:px-16 px-4 transform rotate-1"><%= @post.h2 %></h2>
-          <% end %>
-        </div>
-      </div>
-      <div class="blog-section-body md:px-16 px-4">
-        <% if @post.content.present? %>
-          <%= @post.content.html_safe %>
-        <% end %>
-      </div>
-    </div>
-    <div class="md:w-1/4 md:mx-auto mt-4 md:mt-0">
-      <% if @related_articles.present? %>
-        <div class="md:mb-8 mb-4 md:mx-2 mx-0 px-2 py-2 body-font md:text-base text-sm bg-white border border-white rounded-lg">
-          <h3 class="text-center text-center mb-0 pb-2 font-normal text-gray-700 border-b-2 border-flamingo-800">Related Articles</h3>
-          <div class="px-4 py-2">
-            <% @related_articles.each_with_index do |article, index| %>
-              <p><a href="<%= @related_articles_urls[index] %>" class="no-underline text-gray-700" target="_blank"><%= article %></a></p>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <% if @top_articles.present? %>
-        <div class="md:mb-8 mb-4 md:mx-2 mx-0 px-2 py-2 body-font md:text-base text-sm bg-white border border-white rounded-lg">
-          <h3 class="text-center mb-0 pb-2 font-normal text-gray-700 border-b-2 border-flamingo-800">Top Articles</h3>
-          <div class="px-4 py-2">
-            <% @top_articles.each_with_index do |article, index| %>
-              <p><a href="<%= @top_articles_urls[index] %>" class="no-underline text-gray-700" target="_blank"><%= article %></a></p>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <% if @core_article.present? %>
-        <% if @author.present? && !@author.website.present? %>
-          <div class="px-3 py-3 mx-2 mb-4 border border-white rounded-lg bg-white">
-            <center>
-              <p class="pt-0 text-base"><%= @author.bio.html_safe %></p>
-            </center>
-          </div>
-        <% end %>
-        <div class="sticky top-16">
-          <div class="px-3 py-3 mx-2 border border-white rounded-lg bg-white">
-            <div class="text-center py-2 px-1">
-              Get one new handcrafted piece of content each day
+<style>
+html{
+        overflow-x: hidden;
+}
+body{
+      background-color:#fff;
+      overflow:"hidden";
+}
+.background-grad{
+    background: linear-gradient(213.44deg, #8A5CF6 9.9%, rgba(255, 255, 255, 0) 53.27%);
+
+}
+.h-half{
+    height:40vh;
+}
+</style>
+
+<div class="h-full w-full">
+    <div class="container overflow-hidden">
+        <div>
+        <div class="h-half">
+            <div class="cont h-full flex justify-end items-end justify-between">
+                <div class="left h-full flex items-center">
+                    <div class="">
+                        <div class="text-fos-h1 font-black">Founder Stories</div>
+                        <div class="text-fos-h3 font-light text-steelGrey">Read stories about Startup Moguls who revolutionised the industry
+                            simply by taking the leap!</div>
+                    </div>
+                </div>
+                <div class="right flex overflow-auto">
+                <%= image_tag("grp.svg") %>
+                </div>
             </div>
-            <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-2" do |f| %>
-              <center>
-                <div class="mb-2 px-1 max-w-screen-md">
-                  <div class="px-0 mb-2">
-                    <input name="newsletter_subscriber[name]" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500" id="inline-full-name" type="text" placeholder="Name" required oninvalid="this.setCustomValidity('Enter your name here')" oninput="this.setCustomValidity('')">
-                  </div>
-                  <div class="px-0 mb-2">
-                    <input name="newsletter_subscriber[email]" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500 required" id="inline-full-name" type="email" placeholder="Email" required oninvalid="this.setCustomValidity('Enter your email here')" oninput="this.setCustomValidity('')">
-                  </div>
-                  <div class="px-0">
-                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-base leading-5 font-medium rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Sign me up!</button>
-                  </div>
-                </div>
-              </center>
-            <% end %>
-          </div>
         </div>
-      <% else %>
-        <div class="sticky top-10 px-3 py-3 mx-2 border rounded bg-white">
-          <div class="text-center py-2 px-1">
-            Get one new handcrafted piece of content each day
-          </div>
-          <%= form_with model: @newsletter_subscriber, url: create_newsletter_subscriber_path, local: true, class: "mt-2" do |f| %>
-            <center>
-              <div class="mb-2 px-1 max-w-screen-md">
-                <div class="px-0 mb-2">
-                  <input name="newsletter_subscriber[name]" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500" id="inline-full-name" type="text" placeholder="Name" required oninvalid="this.setCustomValidity('Enter your name here')" oninput="this.setCustomValidity('')">
-                </div>
-                <div class="px-0 mb-2">
-                  <input name="newsletter_subscriber[email]" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-azure-radiance-500 required" id="inline-full-name" type="email" placeholder="Email" required oninvalid="this.setCustomValidity('Enter your email here')" oninput="this.setCustomValidity('')">
-                </div>
-                <div class="px-0">
-                  <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-base leading-5 font-medium rounded-md text-white bg-flamingo-800 hover:bg-white hover:text-flamingo-800 hover:border-gray-700 transition duration-150 ease-in-out">Sign me up!</button>
-                </div>
-              </div>
-            </center>
-          <% end %>
+        <div class="slider mt-4">
+            <div class="text-mediumBlue text-fos-h2 font-black">Immersive Stories</div>
+            <div class="text-steelGrey font-normal text-fos-h4 mt-2">Get lost in these short engrossing stories of founders who set out to achieve
+                something iconic.</div>
+            <div class="img flex overflow-hidden cursor-grab">
+                <% @founders.each do |founder| %>
+                 <div class="m-12">
+                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+                 <div class="text-fos-h4 text-center font-bold mt-2"> <%= founder.name%>  </div>
+                 <div class="text-fos-h4 text-center text-darkGrey font-light"> <%= founder.company_name %> </div>
+                 </div>
+                <% end %>
+            </div>
         </div>
-      <% end %>
-    </div>
-  </section>
-  <br/>
-  <br/>
+        <div class="text-mediumBlue text-fos-h2 font-black mt-20">All Our Stories</div>
+            <div class="text-steelGrey font-normal text-fos-h4 mt-2"> Curated by our best writers, here are all the founder stories you need to know!
+            </div>
+            <div class="filter-section flex mt-8">
+                <div class="filter-table border-2 w-1/4 min-w-min rounded-lg">
+                    <div class="p-4">
+                        <div class="head flex w-full pb-2 border-b">
+                            <%= image_tag("filt.svg",class:"mb-2") %>
+                            <div class="pt-1 pl-2 text-fos-h4 font-normal text-darkGrey">Filters</div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mt-8">
+                                <div class="ml-2 text-fos-h4 text-darkGrey">Age</div>
+                                <div class="text-fos-h5 text-darkGrey">Select All</div>
+                            </div>
+                            <div class="buttons flex mt-2 flex-wrap">
+                                <button class="filter-button mb-2">20-25</button>
+                                <button class="filter-button mb-2">20-25</button>
+                                <button class="filter-button mb-2">20-25</button>
+                                <button class="filter-button mb-2">20-25</button>
+                                <button class="filter-button mb-2">20-25</button>
+                                <button class="filter-button mb-2 ">20-25</button>
+                                <button class="filter-button mb-2">20-25</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mt-4">
+                                <div class="ml-2 text-fos-h4 text-darkGrey">Gender</div>
+                                <div class="text-fos-h5 text-darkGrey">Select All</div>
+                            </div>
+                            <div class="buttons flex mt-2 flex-wrap">
+                                <button class="filter-button mb-2">male</button>
+                                <button class="mb-2 border-lighterGrey border-2 text-lighterGrey font-black text-fos-h5  p-1 rounded-full px-14 mr-2 ">female</button>
+                                <button class="mb-2 filter-button">other</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mt-4 flex-wrap">
+                                <div class="ml-2 text-fos-h4 text-darkGrey">Did start on the side?</div>
+                                <div class="text-fos-h5 text-darkGrey">Select All</div>
+                            </div>
+                            <div class="buttons flex mt-2 flex-wrap">
+                                <button class="border-lighterGrey border-2 text-lighterGrey font-black text-fos-h5  p-1 rounded-full px-20 mr-2">started on the side</button>
+                            </div>
+                            <div class="buttons flex mt-2">
+                                <button class="border-lighterGrey border-2 text-lighterGrey font-black text-fos-h5  p-1 rounded-full px-12 mr-2">quit job</button>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="flex justify-between mt-4">
+                                <div class="ml-2 text-fos-h4 text-darkGrey">Do they code ?</div>
+                                <div class="text-fos-h5 text-darkGrey">Select All</div>
+                            </div>
+                            <div class="buttons flex mt-2">
+                                <button class="border-lighterGrey border-2 text-lighterGrey font-black text-fos-h5  p-1 rounded-full px-8 mr-2">doesn't code</button>
+                                <button class="filter-button">codes</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-12">
+                                <button class="text-fos-h5 text-darkGrey">Clear All filters</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="data w-2/3 ml-8">
+                    <div class="serach border-2 flex rounded-lg">
+                         <%= image_tag("search.svg",class:"ml-2") %>
+                        <input type="text" placeholder="Search by founder's or company's name" class="focus:outline-none m-2 ml-4 pt-1 w-full placeholder-darkGrey text-fos-h4">
+                    </div>
+                    <div class="cards border mt-8 w-1/2  max-w-sm">
+                        <%= image_tag("pr.svg")%>
+                        <div class="box p-2 m-2">
+                            <div class="text-fos-h4 font-bold">Pranay Chulet</div>
+                            <div class="text-fos-h5 leading-3">Quickr</div>
+                            <div class="text-fos-h5 text-darkGrey">Online Classifieds</div>
+                            <div>Tags</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
