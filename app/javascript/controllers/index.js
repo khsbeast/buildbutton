@@ -13,6 +13,9 @@ application.register("overview", OverviewController)
 import OverviewDropdownController from "./overview_dropdown_controller.js"
 application.register("overview-dropdown", OverviewDropdownController)
 
+import ScrollSliderController from "./scroll_slider_controller.js"
+application.register("scroll-slider", ScrollSliderController)
+
 import SubscribeModalController from "./subscribe_modal_controller.js"
 application.register("subscribe-modal", SubscribeModalController)
 

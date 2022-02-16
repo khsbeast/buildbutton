@@ -28,21 +28,52 @@ body{
                 </div>
             </div>
         </div>
+       
         <div class="slider mt-2">
-            <div class="img flex overflow-hidden cursor-grab">
-                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
-                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full mr-12") %>
-                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full mr-12") %>
-                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full mr-12") %>
-                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full mr-12") %>
-                 <%= image_tag("sq.png",class:"w-52 h-52 rounded-full mr-12") %>
+        <div class="img flex overflow-hidden cursor-grab">
+        <div class="flex" data-controller="scroll-slider" data-scroll-slider-slide-value="500">
+        <div data-action="click->scroll-slider#scroll" 
+          data-scroll-slider-direction-param="back" 
+          data-scroll-slider-target="back" 
+          class="w-10 h-36 bg-white border-4 border-slate-50 rounded-xl hidden md:flex flex-col justify-center items-center z-10 cursor-pointer select-none">
+          <%= image_tag("scroll-right-icon.svg", class: "vector-icons-l rotate-180") %>
+        </div>
+        <div class="overflow-x-hidden flex w-full" data-scroll-slider-target="track">
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+             <%= image_tag("sq.png",class:"w-44 h-44 rounded-full mr-12 p-2 bg-gradient-to-tr from-mediumBlue to-instaPink") %>
+        </div>
+        <div data-action="click->scroll-slider#scroll" 
+          data-scroll-slider-direction-param="next" 
+          data-scroll-slider-target="next" 
+          class="w-10 h-36 bg-white border-4 border-slate-50 rounded-xl hidden md:flex flex-col justify-center items-center z-10 cursor-pointer select-none">
+          <%= image_tag("scroll-right-icon.svg", class: "vector-icons-l") %>
+        </div>
+      </div>
             </div>
         </div>
         <div class="text-mediumBlue text-fos-h2 font-black mt-20">All Our Stories</div>
             <div class="text-steelGrey font-normal text-fos-h4 mt-2"> Curated by our best writers, here are all the founder stories you need to know!
             </div>
             <div class="filter-section flex mt-8">
-                <div class="filter-table border-2 w-1/4 min-w-min rounded-lg">
+                <div class="filter-table border-2 w-1/4 min-w-min rounded-lg h-fit">
                     <div class="p-4">
                         <div class="head flex w-full pb-2 border-b">
                             <%= image_tag("filt.svg",class:"mb-2") %>
@@ -102,12 +133,13 @@ body{
                         </div>
                     </div>
                 </div>
-                <div class="data w-2/3 ml-8">
-                    <div class="serach border-2 flex rounded-lg">
+                <div class="data w-2/3 ml-32">
+                    <div class="serach border-2 flex rounded-lg mr-44">
                          <%= image_tag("search.svg",class:"ml-2") %>
                         <input type="text" placeholder="Search by founder's or company's name" class="focus:outline-none m-2 ml-4 pt-1 w-full placeholder-darkGrey text-fos-h4">
                     </div>
-                    <div class="cards border mt-8 w-1/2  max-w-sm">
+                <div class="flex w-full flex-wrap"> 
+                    <div class="cards border mt-8 w-1/2 flex flex-wrap  max-w-sm mr-8">
                         <%= image_tag("pr.svg")%>
                         <div class="box p-2 m-2">
                             <div class="text-fos-h4 font-bold">Pranay Chulet</div>
@@ -115,6 +147,38 @@ body{
                             <div class="text-fos-h5 text-darkGrey">Online Classifieds</div>
                             <div>Tags</div>
                         </div>
+                        
+                    </div>
+                    <div class="cards border mt-8 w-1/2 flex flex-wrap  max-w-sm mr-8">
+                        <%= image_tag("pr.svg")%>
+                        <div class="box p-2 m-2">
+                            <div class="text-fos-h4 font-bold">Pranay Chulet</div>
+                            <div class="text-fos-h5 leading-3">Quickr</div>
+                            <div class="text-fos-h5 text-darkGrey">Online Classifieds</div>
+                            <div>Tags</div>
+                        </div>
+                        
+                    </div>
+                    <div class="cards border mt-8 w-1/2 flex flex-wrap  max-w-sm mr-8">
+                        <%= image_tag("pr.svg")%>
+                        <div class="box p-2 m-2">
+                            <div class="text-fos-h4 font-bold">Pranay Chulet</div>
+                            <div class="text-fos-h5 leading-3">Quickr</div>
+                            <div class="text-fos-h5 text-darkGrey">Online Classifieds</div>
+                            <div>Tags</div>
+                        </div>
+                    
+                    </div>
+                    <div class="cards border mt-8 w-1/2 flex flex-wrap  max-w-sm mr-8">
+                        <%= image_tag("pr.svg")%>
+                        <div class="box p-2 m-2">
+                            <div class="text-fos-h4 font-bold">Pranay Chulet</div>
+                            <div class="text-fos-h5 leading-3">Quickr</div>
+                            <div class="text-fos-h5 text-darkGrey">Online Classifieds</div>
+                            <div>Tags</div>
+                        </div>
+                    
+                    </div>
                     </div>
                 </div>
             </div>
