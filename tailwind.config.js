@@ -25,7 +25,10 @@ module.exports = {
         instaPink: '#FF5B5B',
         steelGrey: '#3F4249',
         lighterGrey: '#B2B6BB',
+        darkGreen: '#346D36',
+        lightGreen: '#54CB59',
         darkGrey: '#61656D',
+        charCoal: "#3F4249",
         borderGrey: '#DADDDF',
         flamingo: {
           '50': '#f6f5fa',
@@ -109,6 +112,7 @@ module.exports = {
         'fos-h1': '4rem',
         'fos-h2': '2.375rem',
         'fos-h3': '1.5rem',
+        'fos-h3.5': '1.15rem',
         'fos-h4': '1.25rem',
         'fos-h5': '0.875rem',
         'article-h2': '2.25rem',
